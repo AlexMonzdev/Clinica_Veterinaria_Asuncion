@@ -42,4 +42,20 @@ public class Tutor {
     protected List<Tutor> findAll() {
         return List.of();
     }
+
+    public class IdGenerator{
+        private IdGenerator id;
+        private String name;
+
+        public IdGenerator(String name){
+            this.id = IdGenerator.randomIdGenerator();
+            this.name = name;
+
+        }
+
+        private static IdGenerator randomIdGenerator() {
+        return randomIdGenerator();
+        }
+
+    }
 }
