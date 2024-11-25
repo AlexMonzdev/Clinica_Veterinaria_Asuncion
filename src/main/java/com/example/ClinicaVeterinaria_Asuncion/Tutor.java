@@ -1,17 +1,20 @@
 package com.example.ClinicaVeterinaria_Asuncion;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table (name = "tutors")
 
-public class TutorRepository {
-    private String name;
+public class Tutor {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idNumber;
+    private String name;
     private String associatedPatient;
 
-    public TutorRepository(String name, long idNumber, String associatedPatient) {
+    public Tutor(String name, long idNumber, String associatedPatient) {
         this.name = name;
         this.idNumber = idNumber;
         this.associatedPatient = associatedPatient;
@@ -27,5 +30,9 @@ public class TutorRepository {
 
     public String getAssociatedPatient() {
         return associatedPatient;
+    }
+
+    protected List<Tutor> findAll() {
+        return List.of();
     }
 }
