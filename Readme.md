@@ -54,11 +54,12 @@ La Epic 2 tiene como objetivo centralizar la gestión de la información de los 
 **User story 3:** Registrar y gestionar toda la información de los pacientes.
 
 - Nombre del paciente.
-- Género del paciente (**Mujer**; **Hombre**)
-- Nombre y apellido del paciente.
-- Edad.
+- Género del paciente (**Macho**; **Hembra**)
+- Edad
 - Nro de identificación (Autogenerado)
 - Tutor asociado (por ID)
+- Especie (**Perro** o **Gato**)
+- Raza (Opcional y por defecto **desconocido**)
 
 **User story 4**: Buscar pacientes.
 
@@ -90,16 +91,13 @@ La Epic 3 tiene como objetivo centralizar la gestión de la información de los 
 
 **User story 2**: Registrar y gestionar toda la información de los tutores.
 
-- Nombre del tutor.
-- Especie (**Perro** o **Gato**)
-- Raza (Opcional y por defecto **desconocido**)
-- Edad.
+- Nombre del tutor
 - Nro de identificación (Autogenerado)
 - Paciente asociado (por ID)
 
 **User story 3**: Buscar tutores.
 
-- Buscar pacientes por su nro de ID único.
+- Buscar tutores por su nro de ID único.
 - Ver todos los detalles del tutor, incluyendo el paciente asociado.
 
 **User story 4**: Listar tutores.
