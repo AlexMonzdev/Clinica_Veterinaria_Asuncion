@@ -10,15 +10,22 @@ import java.util.List;
 public class Tutor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false)
     private long idNumber;
+    @Column(nullable = false)
     private String name;
+    @Column(nullable = false)
     private String associatedPatient;
+    @Column(nullable = false)
+    private boolean hasPatient;
 
     public Tutor(String name, long idNumber, String associatedPatient) {
         this.name = name;
         this.idNumber = idNumber;
         this.associatedPatient = associatedPatient;
     }
+
+
 
     public String getName() {
         return name;
