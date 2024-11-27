@@ -1,7 +1,5 @@
-package com.example.ClinicaVeterinaria_Asuncion.controllers;
+package com.example.ClinicaVeterinaria_Asuncion;
 
-import com.example.ClinicaVeterinaria_Asuncion.Patient;
-import com.example.ClinicaVeterinaria_Asuncion.PatientRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +23,7 @@ public class PatientController {
     }
 
     @PostMapping("/patient")
-    public ResponseEntity<Patient> addTutor(@RequestBody Patient patient) {
+    public ResponseEntity<Patient> addPatient(@RequestBody Patient patient) {
 
         Optional<Patient> existingPatient = patientRepository.findByName(patient.getName());
 

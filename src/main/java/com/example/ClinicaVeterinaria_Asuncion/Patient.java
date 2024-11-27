@@ -33,7 +33,7 @@ public class Patient {
         this.species = species;
     }
 
-    public Object getName() {
+    public String getName() {
         return name;
     }
 
