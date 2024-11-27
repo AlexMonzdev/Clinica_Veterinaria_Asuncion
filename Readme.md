@@ -1,4 +1,5 @@
 # Sistema de Gestión para Clínica Veterinaria
+![image](https://github.com/user-attachments/assets/c74e942c-be4d-486d-a979-ff431379e96d)
 
 ### 🏁 **Contexto General**
 
