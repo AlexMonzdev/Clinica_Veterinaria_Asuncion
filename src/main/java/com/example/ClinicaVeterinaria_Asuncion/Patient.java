@@ -2,6 +2,10 @@ package com.example.ClinicaVeterinaria_Asuncion;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
+import java.time.Period;
+
+
 @Entity
 public class Patient {
     @Id
@@ -12,7 +16,7 @@ public class Patient {
     @Column
     private String gender;
     @Column
-    private int age;
+    private LocalDate birthDate;
     @ManyToOne
     @JoinColumn(name = "idTutor", nullable = false)
     private Tutor tutor;
@@ -24,52 +28,59 @@ public class Patient {
 
     }
 
-    public Patient(Long id, String name, String gender, int age, Tutor tutor, String species) {
-        this.id = id;
+    public Patient(String name, String gender, LocalDate birthDate, Tutor tutor, String species) {
         this.name = name;
         this.gender = gender;
-        this.age = age;
+        this.birthDate = birthDate;
         this.tutor = tutor;
         this.species = species;
     }
 
+    public int getAge() {
+        if (birthDate == null) {
+            return 0;
+        }
+        return Period.between(birthDate, LocalDate.now()).getYears();
+    }
+
+
     public String getName() {
         return name;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public Tutor getTutor() {
-        return tutor;
-    }
-
-    public String getSpecies() {
-        return species;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
+    public String getGender() {
+        return gender;
+    }
+
     public void setGender(String gender) {
         this.gender = gender;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public LocalDate getBirthDate() {
+        return birthDate;
     }
 
-    public void setSpecies(String species) {
-        this.species = species;
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public Tutor getTutor() {
+        return tutor;
     }
 
     public void setTutor(Tutor tutor) {
         this.tutor = tutor;
+    }
+
+    public String getSpecies() {
+        return species;
+    }
+
+    public void setSpecies(String species) {
+        this.species = species;
     }
 }
