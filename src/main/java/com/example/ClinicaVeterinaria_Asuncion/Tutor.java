@@ -13,49 +13,50 @@ public class Tutor {
     @Column(nullable = false)
     private long idNumber;
     @Column(nullable = false)
-    private String name;
+    private String firstname;
     @Column(nullable = false)
-    private String associatedPatient;
-    @Column(nullable = false)
-    private boolean hasPatient;
+    private String lastname;
+    @Column (nullable = false)
+    private int phoneNumber;
 
-    public Tutor(String name, long idNumber, String associatedPatient) {
-        this.name = name;
-        this.idNumber = idNumber;
-        this.associatedPatient = associatedPatient;
+    public Tutor() {
     }
 
-
-
-    public String getName() {
-        return name;
+    public Tutor(String firstname, String lastname, int phoneNumber) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.phoneNumber = phoneNumber;
     }
 
     public long getIdNumber() {
         return idNumber;
     }
 
-    public String getAssociatedPatient() {
-        return associatedPatient;
+    public void setIdNumber(long idNumber) {
+        this.idNumber = idNumber;
     }
 
-    protected List<Tutor> findAll() {
-        return List.of();
+    public String getFirstname() {
+        return firstname;
     }
 
-    public class IdGenerator{
-        private IdGenerator id;
-        private String name;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
 
-        public IdGenerator(String name){
-            this.id = IdGenerator.randomIdGenerator();
-            this.name = name;
+    public String getLastname() {
+        return lastname;
+    }
 
-        }
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
 
-        private static IdGenerator randomIdGenerator() {
-        return randomIdGenerator();
-        }
+    public int getPhoneNumber() {
+        return phoneNumber;
+    }
 
+    public void setPhoneNumber(int phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }
