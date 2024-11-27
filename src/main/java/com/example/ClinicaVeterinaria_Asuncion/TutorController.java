@@ -1,24 +1,41 @@
 package com.example.ClinicaVeterinaria_Asuncion;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
-@RequestMapping("/api/clinica")
-public class TutorController extends Tutor {
+@RestController
+@RequestMapping("/api/clinic")
+public class TutorController {
 
-    private final Tutor tutor;
+    private final TutorRepository tutorRepository;
 
-    public TutorController(String name, long idNumber, String associatedPatient, Tutor tutor) {
-        super(name, idNumber, associatedPatient);
-        this.tutor = tutor;
+
+    public TutorController(TutorRepository tutorRepositoryRepository) {
+        this.tutorRepository = tutorRepositoryRepository;
     }
 
     @GetMapping
     public List<Tutor> getAllTutors() {
-        return tutor.findAll();
+        return tutorRepository.findAll();
     }
+
+    @PostMapping ("/tutor")
+    public ResponseEntity<Tutor> addTutor(@RequestBody Tutor tutor) {
+
+        Optional<Tutor> existingTutor = tutorRepository.findByPhoneNumber(tutor.getPhoneNumber());
+
+        if (existingTutor.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        tutorRepository.save(tutor);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+
 
 
 }
