@@ -1,5 +1,7 @@
-package com.example.ClinicaVeterinaria_Asuncion;
+package com.example.ClinicaVeterinaria_Asuncion.controllers;
 
+import com.example.ClinicaVeterinaria_Asuncion.Tutor;
+import com.example.ClinicaVeterinaria_Asuncion.TutorRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +20,7 @@ public class TutorController {
         this.tutorRepository = tutorRepositoryRepository;
     }
 
-    @GetMapping
+    @GetMapping("/tutor")
     public List<Tutor> getAllTutors() {
         return tutorRepository.findAll();
     }
