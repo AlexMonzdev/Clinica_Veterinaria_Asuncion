@@ -60,7 +60,7 @@ El sistema será implementado como una **API REST** desarrollada en **Java Sprin
 ![vet-asuncion_1](https://github.com/user-attachments/assets/29b1ca2f-803b-47ad-abe8-beab43e00b93)
 
 ### **Diagrama UML**
-![uml](/Users/andreea/Desktop/Factoria_F5/Semana9_Clinica_Veterinaria/ClinicaVeterinaria_Asuncion/Images/UML Vet Clinic.drawio.png)
+![uml](https://github.com/aSACo-FactoriaF5/ClinicaVeterinaria_Asuncion/blob/main/Images/UML%20Vet%20Clinic.drawio.png)
 
 
 ### **Vista Kanban**
