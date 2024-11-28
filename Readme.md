@@ -1,5 +1,7 @@
 # Sistema de Gestión para Clínica Veterinaria
-![image](https://github.com/user-attachments/assets/c74e942c-be4d-486d-a979-ff431379e96d)
+
+### **Diagrama Enitidad Relacion**
+![vet-asuncion_1](https://github.com/user-attachments/assets/29b1ca2f-803b-47ad-abe8-beab43e00b93)
 
 ### 🏁 **Contexto General**
 
