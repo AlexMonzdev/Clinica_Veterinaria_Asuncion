@@ -44,7 +44,27 @@ public class TutorController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    @PutMapping ("/tutor/{id}")
+    public ResponseEntity<Tutor> updateTutor(@PathVariable Long id, @RequestBody Tutor tutorDetails){
+        Optional<Tutor> optionalTutor = tutorRepository.findById(id);
 
+        if (optionalTutor.isPresent()){
+            Tutor existingTutor = optionalTutor.get();
+            existingTutor.setFirstname(tutorDetails.getFirstname());
+            existingTutor.setLastname(tutorDetails.getLastname());
+            existingTutor.setPhoneNumber(tutorDetails.getPhoneNumber());
+
+            tutorRepository.save(existingTutor);
+            return new ResponseEntity<>(existingTutor, HttpStatus.OK);
+    }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @DeleteMapping ("/tutor/{id}")
+    public ResponseEntity<Tutor> deleteTutor (@PathVariable Long id){
+        tutorRepository.deleteById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 
 }
 
