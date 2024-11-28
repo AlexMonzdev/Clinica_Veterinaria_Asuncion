@@ -1,4 +1,4 @@
-package com.example.ClinicaVeterinaria_Asuncion;
+package com.example.ClinicaVeterinaria_Asuncion.Entities;
 
 import jakarta.persistence.*;
 
