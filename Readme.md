@@ -53,18 +53,18 @@ El sistema será implementado como una **API REST** desarrollada en **Java Sprin
 ## Imagenes
 
 ### Front End Screenshot
-![FrontEnd](https://github.com/andreeaclmr/Page-Craft-Java-JPA/blob/main/src/Screenshot%202024-11-22%20at%2010.57.24.png)
+![FrontEnd](https://github.com/aSACo-FactoriaF5/ClinicaVeterinaria_Asuncion/blob/main/Images/Inicio%20Frontend.png)
 
 
 ### **Diagrama Entidad Relacion**
 ![vet-asuncion_1](https://github.com/user-attachments/assets/29b1ca2f-803b-47ad-abe8-beab43e00b93)
 
 ### **Vista Kanban**
-![kanban](https://github.com/user-attachments/assets/29b1ca2f-803b-47ad-abe8-beab43e00b93)
+![kanban](https://github.com/aSACo-FactoriaF5/ClinicaVeterinaria_Asuncion/blob/main/Images/Kanban%20View.png)
 
 
 ### **Vista Proyecto**
-![project](https://github.com/user-attachments/assets/29b1ca2f-803b-47ad-abe8-beab43e00b93)
+![project](https://github.com/aSACo-FactoriaF5/ClinicaVeterinaria_Asuncion/blob/main/Images/Project%20View.png)
 
 
 
