@@ -1,8 +1,5 @@
 # Sistema de Gestión para Clínica Veterinaria
 
-### **Diagrama Enitidad Relacion**
-![vet-asuncion_1](https://github.com/user-attachments/assets/29b1ca2f-803b-47ad-abe8-beab43e00b93)
-
 ### 🏁 **Contexto General**
 
 Margarita está a punto de abrir su clínica veterinaria y necesita un sistema para gestionar los datos de sus pacientes y sus tutores. Este sistema será esencial para mantener organizada toda la información de los animales atendidos y sus responsables.
@@ -11,125 +8,78 @@ En este primer sprint, nos enfocaremos en las funcionalidades más importantes d
 
 El sistema será implementado como una **API REST** desarrollada en **Java Spring Boot**, y los datos serán almacenados en una base de datos.
 
-# **Epic 1 - Inicio Proyecto**
 
-**User Story 1**: Planteamiento de herramientas y documentación
+## 📍Features at a glance
+- [x] - Se conecta a una API real a través de JPA
+- [x] - Configuración de JPA a través del back-end en Java
+- [x] - Cada producto añadido en JPA recibe un ID único
+- [x] - Los productos añadidos en la base de datos aparecen en el front-end, identificados por su nombre
+- [x] - La eliminación y edición de productos en la base de datos se puede ver en el front-end
+- [x] - CRUD probado con Postman
 
-1. API REST
-2. Java Spring Boot H2
-    - Definir las rutas básicas de la API (e.g., /pacientes, /tutores) y los métodos HTTP soportados (GET, POST, PUT, DELETE).
-    - Crear controladores básicos para manejar las solicitudes HTTP.
+## Tecnologias Utilizadas
 
-**User Story 2:** Estudio individual de propuesta de stakeholder
 
-**User Story 3:** Estudio de diagrama de clases
+### <ins>Back End</ins>
+- [x] <img src="https://img.shields.io/badge/Intellij Idea-000?logo=intellij-idea&style=for-the-badge"/> 
 
-**User Story 4:** Estudio de tecnologías y base de datos.
+- [x] <img src= "https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white"/>
 
-**User story 5:** Documentación.
+- [x] <img src= "https://badgen.net/badge/icon/maven?icon=maven&label"/>
 
-- Crear un documento README con información básica sobre el proyecto, como tecnologías utilizadas, estructura del proyecto, y cómo ejecutar la aplicación.
 
-## Criterios de aceptación:
+### <ins>Data & APIs</ins>
 
-Se ha definido un conjunto de herramientas y tecnologías a utilizar en el proyecto, incluyendo:
+- [x] <img src= "https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white"/>
 
-- Lenguaje de programación: Java
-- Framework: Spring Boot
-- Base de datos: H2 (para desarrollo)
-- Cada miembro del equipo ha revisado y comprendido la propuesta del stakeholder.
-- Se ha creado un diagrama de clases UML que representa las entidades del sistema (paciente, tutor, etc.) y sus relaciones.
+- [x] <img src= "https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white"/>
 
----
+- [x] <img src= "https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white"/>
 
-# **Epic 2: Gestión de Pacientes**
+- [x] Dependencies: H2, Spring Web, JPA
 
-La Epic 2 tiene como objetivo centralizar la gestión de la información de los pacientes.
 
-**User Story 1: Iniciar proyecto con Spring**
+### <ins>Misc</ins>
 
-- Especificar la versión de Spring a utilizar y las dependencias adicionales necesarias (e.g., Spring Data JPA para la interacción con la base de datos).
+- [x] <img src="https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white"/>
 
-**User Story 2: Creación de clases y estructura de carpetas**
+- [x] <img src= "https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/>
 
-- Definir una estructura de paquetes clara y coherente
+- [x] <img src= "https://shields.io/badge/simple__diarizer-Trello-blue?logo=Trello&style=flat"/>
 
-**User story 3:** Registrar y gestionar toda la información de los pacientes.
+- [x] <img src= "https://img.shields.io/badge/Lucid-282C33?logo=lucid&logoColor=fff&style=for-the-badge"/>
 
-- Nombre del paciente.
-- Género del paciente (**Macho**; **Hembra**)
-- Edad
-- Nro de identificación (Autogenerado)
-- Tutor asociado (por ID)
-- Especie (**Perro** o **Gato**)
-- Raza (Opcional y por defecto **desconocido**)
 
-**User story 4**: Buscar pacientes.
+## Imagenes
 
-- Buscar pacientes por su nro de ID único.
-- Ver todos los detalles del paciente, incluyendo el tutor asociado.
+### Front End Screenshot
+![FrontEnd](https://github.com/andreeaclmr/Page-Craft-Java-JPA/blob/main/src/Screenshot%202024-11-22%20at%2010.57.24.png)
 
-**User story 5**: Listar pacientes.
 
-- Listar todos los pacientes registrados en el sistema.
-- Mostrar información básica (**Nombre y apellido; Género**; **Tutor asociado** )
+### **Diagrama Entidad Relacion**
+![vet-asuncion_1](https://github.com/user-attachments/assets/29b1ca2f-803b-47ad-abe8-beab43e00b93)
 
-**User story 6**: Eliminar tutores.
+### **Vista Kanban**
+![kanban](https://github.com/user-attachments/assets/29b1ca2f-803b-47ad-abe8-beab43e00b93)
 
-- Permitir eliminar un paciente del sistema, asegurando que ya no esté disponible.
 
-## Criterios de Aceptación
+### **Vista Proyecto**
+![project](https://github.com/user-attachments/assets/29b1ca2f-803b-47ad-abe8-beab43e00b93)
 
-- **Base de datos:** Especificar el tipo de base de datos a utilizar (e.g., MySQL, PostgreSQL) y el esquema de la tabla de pacientes.
-- **Tutor asociado:** Definir cómo se realizará la asociación entre el paciente y el tutor (e.g., mediante una llave foránea en la tabla de pacientes).
-- **Número de identificación único:** Especificar el algoritmo de generación (e.g., UUID) y garantizar su unicidad.
 
----
 
-# Epic 3 - Crear Gestor de Tutores
+## Contributors
+- **Carla Sanchez**
+  [<img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />](https://github.com/Carlassanchez24)
+  [<img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />](https://www.linkedin.com/in/carla-sanchez24/)
+  
+- **Alex Monzon**
+  [<img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />](https://github.com/AlexMonzdev)
+  [<img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />](https://www.linkedin.com/in/alexmonzon/)
+  
+- **Stefano Micciche**
+  [<img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />](https://github.com/StefanoMicciche)
+[<img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />](https://www.linkedin.com/in/stefano-micciche-48949021b/)
 
-La Epic 3 tiene como objetivo centralizar la gestión de la información de los tutores.
-
-**User story 1**: Los datos serán almacenados en una base de datos.
-
-**User story 2**: Registrar y gestionar toda la información de los tutores.
-
-- Nombre del tutor
-- Nro de identificación (Autogenerado)
-- Paciente asociado (por ID)
-
-**User story 3**: Buscar tutores.
-
-- Buscar tutores por su nro de ID único.
-- Ver todos los detalles del tutor, incluyendo el paciente asociado.
-
-**User story 4**: Listar tutores.
-
-- Listar todos los tutores registrados en el sistema.
-- Mostrar información básica (**Nombre; Especie**; **Paciente asociado** )
-
-**User story 5**: Eliminar tutores.
-
-- Permitir eliminar un paciente del sistema, asegurando que ya no esté disponible.
-
-## Criterios de aceptación
-
-- **Base de datos:** Los datos de los tutores se almacenarán en una tabla específica de la base de datos, relacionada con la tabla de pacientes mediante la clave foránea "paciente_id".
-- **Integridad de datos:** Se implementarán mecanismos para garantizar la integridad de los datos, como la validación de campos obligatorios y la prevención de duplicados en el número de identificación del tutor.
-- **Relación tutor-paciente:** Se debe definir claramente la relación entre un tutor y un paciente. ¿Un tutor puede tener múltiples pacientes? ¿Un paciente puede tener múltiples tutores?
-
----
-
-# **Epic 4 - Crear entorno TDD**
-
-La Epic 4 tiene como objetivo garantizar la calidad del código.
-
-- Se ha seleccionado un framework de pruebas adecuado para el proyecto (ej: JUnit)
-- Se ha definido una estructura de carpetas y paquetes clara para organizar las pruebas.
-- Se han creado clases de prueba base para encapsular la lógica común de las pruebas.
-
-## Criterios de aceptación:
-
-- Se han creado clases de prueba para cada servicio de la capa de negocio.
-- Se han escrito casos de prueba para verificar diferentes escenarios de entrada y salida.
-- Se ha utilizado un estilo de codificación claro y conciso para las pruebas.
+- **Andreea Celmare**
+  [<img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />](https://github.com/andreeaclmr) [<img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />](https://www.linkedin.com/in/andreea-alina-celmare/)
