@@ -35,6 +35,14 @@ public class TutorController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @GetMapping("/tutor/{phoneNumber}")
+    public ResponseEntity<Tutor> getTutorByPhoneNumber(@PathVariable int phoneNumber) {
+        Optional<Tutor> optionalTutor = tutorRepository.findByPhoneNumber(phoneNumber);
+        if (optionalTutor.isPresent()) {
+            return new ResponseEntity<>(optionalTutor.get(), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
 
 
 
