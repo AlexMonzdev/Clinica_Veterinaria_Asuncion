@@ -9,7 +9,7 @@ En este primer sprint, nos enfocaremos en las funcionalidades más importantes d
 El sistema será implementado como una **API REST** desarrollada en **Java Spring Boot**, y los datos serán almacenados en una base de datos.
 
 
-## 📍Features at a glance
+## 📍Caracteristicas
 - [x] - Se conecta a una API real a través de JPA
 - [x] - Configuración de JPA a través del back-end en Java
 - [x] - Cada producto añadido en JPA recibe un ID único
