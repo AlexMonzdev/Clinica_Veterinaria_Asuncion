@@ -35,4 +35,29 @@ public class PatientController {
         patientRepository.save(patient);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @PutMapping ("/patient/{id}")
+    public ResponseEntity<Patient> updatePatient(@PathVariable Long id, @RequestBody Patient patientDetails){
+        Optional<Patient> optionalPatient = patientRepository.findById(id);
+
+        if (optionalPatient.isPresent()){
+            Patient existingPatient = optionalPatient.get();
+            existingPatient.setName(patientDetails.getName());
+            existingPatient.setGender(patientDetails.getGender());
+            existingPatient.setBirthDate(patientDetails.getBirthDate());
+            existingPatient.setTutor(patientDetails.getTutor());
+            existingPatient.setSpecies(patientDetails.getSpecies());
+
+            patientRepository.save(existingPatient);
+            return new ResponseEntity<>(existingPatient, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @DeleteMapping ("/patient/{id}")
+    public ResponseEntity<Patient> deletePatient (@PathVariable Long id){
+        patientRepository.deleteById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 }
