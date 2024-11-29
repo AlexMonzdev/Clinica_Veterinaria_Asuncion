@@ -24,7 +24,7 @@ public class Patient {
     private String species;
 
 
-    public Patient(){
+    public Patient() {
 
     }
 
@@ -43,6 +43,9 @@ public class Patient {
         return Period.between(birthDate, LocalDate.now()).getYears();
     }
 
+    public Long getId() {
+        return id;
+    }
 
     public String getName() {
         return name;

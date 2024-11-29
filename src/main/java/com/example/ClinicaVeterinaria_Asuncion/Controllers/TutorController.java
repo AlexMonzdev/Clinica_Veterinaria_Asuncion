@@ -15,7 +15,6 @@ public class TutorController {
 
     private final TutorRepository tutorRepository;
 
-
     public TutorController(TutorRepository tutorRepositoryRepository) {
         this.tutorRepository = tutorRepositoryRepository;
     }
@@ -36,6 +35,7 @@ public class TutorController {
         tutorRepository.save(tutor);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
 
     @GetMapping("/tutor/{phoneNumber}")
     public ResponseEntity<Tutor> getTutorByPhoneNumber(@PathVariable int phoneNumber) {
