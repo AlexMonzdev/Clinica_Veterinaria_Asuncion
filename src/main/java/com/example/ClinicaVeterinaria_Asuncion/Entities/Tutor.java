@@ -19,8 +19,7 @@ public class Tutor {
     private String lastname;
     @Column (nullable = false)
     private int phoneNumber;
-    @OneToMany(mappedBy = "tutor", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Patient> patients = new ArrayList<>();
+
 
     public Tutor() {
     }
