@@ -1,7 +1,7 @@
-package com.example.ClinicaVeterinaria_Asuncion.Controllers;
+package com.example.ClinicaVeterinaria_Asuncion.controllers;
 
-import com.example.ClinicaVeterinaria_Asuncion.Entities.Patient;
-import com.example.ClinicaVeterinaria_Asuncion.Repositories.PatientRepository;
+import com.example.ClinicaVeterinaria_Asuncion.entities.Patient;
+import com.example.ClinicaVeterinaria_Asuncion.repositories.PatientRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

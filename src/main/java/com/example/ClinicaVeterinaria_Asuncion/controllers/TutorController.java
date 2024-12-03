@@ -1,7 +1,7 @@
-package com.example.ClinicaVeterinaria_Asuncion.Controllers;
+package com.example.ClinicaVeterinaria_Asuncion.controllers;
 
-import com.example.ClinicaVeterinaria_Asuncion.Entities.Tutor;
-import com.example.ClinicaVeterinaria_Asuncion.Repositories.TutorRepository;
+import com.example.ClinicaVeterinaria_Asuncion.entities.Tutor;
+import com.example.ClinicaVeterinaria_Asuncion.repositories.TutorRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +27,7 @@ public class TutorController {
     @PostMapping ("/tutor")
     public ResponseEntity<Tutor> addTutor(@RequestBody Tutor tutor) {
 
-        Optional<Tutor> existingTutor = tutorRepository.findByPhoneNumber(tutor.getPhoneNumber());
+        Optional<Tutor> existingTutor = tutorRepository.findByPhoneNumber(tutor.getEmail());
 
         if (existingTutor.isPresent()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -52,9 +52,9 @@ public class TutorController {
 
         if (optionalTutor.isPresent()){
             Tutor existingTutor = optionalTutor.get();
-            existingTutor.setFirstname(tutorDetails.getFirstname());
-            existingTutor.setLastname(tutorDetails.getLastname());
-            existingTutor.setPhoneNumber(tutorDetails.getPhoneNumber());
+            existingTutor.setName(tutorDetails.getName());
+            existingTutor.setPhone(tutorDetails.getPhone());
+            existingTutor.setEmail(tutorDetails.getEmail());
 
             tutorRepository.save(existingTutor);
             return new ResponseEntity<>(existingTutor, HttpStatus.OK);
