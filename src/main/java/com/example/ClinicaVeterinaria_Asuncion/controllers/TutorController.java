@@ -1,43 +1,35 @@
 package com.example.ClinicaVeterinaria_Asuncion.controllers;
 
+import com.example.ClinicaVeterinaria_Asuncion.dtos.TutorRequest;
+import com.example.ClinicaVeterinaria_Asuncion.services.TutorServices;
 import com.example.ClinicaVeterinaria_Asuncion.entities.Tutor;
-import com.example.ClinicaVeterinaria_Asuncion.repositories.TutorRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/clinic")
 public class TutorController {
 
-    private final TutorRepository tutorRepository;
+    private final TutorServices tutorServices;
 
-    public TutorController(TutorRepository tutorRepositoryRepository) {
-        this.tutorRepository = tutorRepositoryRepository;
+    public TutorController(TutorServices tutorServices) {
+        this.tutorServices = tutorServices;
     }
 
-    @GetMapping("/tutor")
+    /* @GetMapping("/tutor")
     public List<Tutor> getAllTutors() {
         return tutorRepository.findAll();
-    }
+    } */
 
     @PostMapping ("/tutor")
-    public ResponseEntity<Tutor> addTutor(@RequestBody Tutor tutor) {
-
-        Optional<Tutor> existingTutor = tutorRepository.findByPhoneNumber(tutor.getEmail());
-
-        if (existingTutor.isPresent()) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-        tutorRepository.save(tutor);
+    public ResponseEntity<Tutor> addTutor(@RequestBody TutorRequest tutorRequest) {
+        tutorServices.createTutor(tutorRequest);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
 
-    @GetMapping("/tutor/{phoneNumber}")
+   /*  @GetMapping("/tutor/{phoneNumber}")
     public ResponseEntity<Tutor> getTutorByPhoneNumber(@PathVariable int phoneNumber) {
         Optional<Tutor> optionalTutor = tutorRepository.findByPhoneNumber(phoneNumber);
         if (optionalTutor.isPresent()) {
@@ -66,7 +58,7 @@ public class TutorController {
     public ResponseEntity<Tutor> deleteTutor (@PathVariable Long id){
         tutorRepository.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
-    }
+    } */
 
 }
 
