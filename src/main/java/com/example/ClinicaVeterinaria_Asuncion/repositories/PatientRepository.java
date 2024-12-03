@@ -1,6 +1,6 @@
-package com.example.ClinicaVeterinaria_Asuncion.Repositories;
+package com.example.ClinicaVeterinaria_Asuncion.repositories;
 
-import com.example.ClinicaVeterinaria_Asuncion.Entities.Patient;
+import com.example.ClinicaVeterinaria_Asuncion.entities.Patient;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
