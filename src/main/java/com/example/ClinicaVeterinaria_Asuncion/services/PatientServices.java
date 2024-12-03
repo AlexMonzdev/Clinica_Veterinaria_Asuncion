@@ -2,7 +2,7 @@ package com.example.ClinicaVeterinaria_Asuncion.services;
 
 import com.example.ClinicaVeterinaria_Asuncion.dtos.PatienRequestDTO;
 import com.example.ClinicaVeterinaria_Asuncion.entities.Patient;
-import com.example.ClinicaVeterinaria_Asuncion.exeptions.PatientNotFoundException;
+import com.example.ClinicaVeterinaria_Asuncion.exceptions.PatientNotFoundException;
 import com.example.ClinicaVeterinaria_Asuncion.repositories.PatientRepository;
 import org.springframework.stereotype.Service;
 
