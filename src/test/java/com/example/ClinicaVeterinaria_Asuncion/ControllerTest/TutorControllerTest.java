@@ -4,15 +4,14 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
-import com.example.ClinicaVeterinaria_Asuncion.Entities.Tutor;
-import com.example.ClinicaVeterinaria_Asuncion.Repositories.TutorRepository;
+import com.example.ClinicaVeterinaria_Asuncion.entities.Tutor;
+import com.example.ClinicaVeterinaria_Asuncion.repositories.TutorRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.ResultMatcher;
 
 @AutoConfigureMockMvc
 @SpringBootTest
@@ -29,9 +28,9 @@ public class TutorControllerTest {
 
 
         Tutor tutor1 = new Tutor();
-        tutor1.setFirstname("Jose");
-        tutor1.setLastname("Gonzalez");
-        tutor1.setPhoneNumber(1234);
+        tutor1.setName("Jose");
+        tutor1.setPhone("Gonzalez");
+        tutor1.setEmail(1234);
         tutorRepository.save(tutor1);
 
         // WHEN: Realizar la solicitud GET al endpoint
