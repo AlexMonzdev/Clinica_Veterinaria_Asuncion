@@ -1,6 +1,7 @@
 package com.example.ClinicaVeterinaria_Asuncion.services;
 
-import com.example.ClinicaVeterinaria_Asuncion.dtos.PatienRequestDTO;
+
+import com.example.ClinicaVeterinaria_Asuncion.dtos.PatientRequestDTO;
 import com.example.ClinicaVeterinaria_Asuncion.entities.Patient;
 import com.example.ClinicaVeterinaria_Asuncion.exceptions.PatientNotFoundException;
 import com.example.ClinicaVeterinaria_Asuncion.repositories.PatientRepository;
@@ -18,7 +19,7 @@ public class PatientServices {
     }
 
 
-    public Patient addPatientService(PatienRequestDTO patientRequestDTO) {
+    public Patient addPatientService(PatientRequestDTO patientRequestDTO) {
         Patient patient = new Patient();
         patient.setName(patientRequestDTO.name());
         patient.setSpecies(patientRequestDTO.species());

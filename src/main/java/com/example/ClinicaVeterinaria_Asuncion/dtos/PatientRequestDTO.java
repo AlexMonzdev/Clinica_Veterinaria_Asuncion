@@ -4,7 +4,7 @@ import com.example.ClinicaVeterinaria_Asuncion.entities.Tutor;
 
 import java.time.LocalDate;
 
-public record PatienRequestDTO (
+public record PatientRequestDTO(
    String name,
    String species,
    String breed,

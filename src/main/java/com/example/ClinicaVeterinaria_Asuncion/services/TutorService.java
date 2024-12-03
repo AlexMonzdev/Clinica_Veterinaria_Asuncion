@@ -1,6 +1,6 @@
 package com.example.ClinicaVeterinaria_Asuncion.services;
 
-import com.example.ClinicaVeterinaria_Asuncion.dtos.TutorRequestDTO;
+import com.example.ClinicaVeterinaria_Asuncion.repositories.dtos.TutorRequestDTO;
 import com.example.ClinicaVeterinaria_Asuncion.entities.Tutor;
 import com.example.ClinicaVeterinaria_Asuncion.repositories.TutorRepository;
 import org.springframework.stereotype.Service;

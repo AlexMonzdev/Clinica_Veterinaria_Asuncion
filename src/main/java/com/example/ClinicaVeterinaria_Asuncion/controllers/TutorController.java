@@ -1,6 +1,6 @@
 package com.example.ClinicaVeterinaria_Asuncion.controllers;
 
-import com.example.ClinicaVeterinaria_Asuncion.dtos.TutorRequestDTO;
+import com.example.ClinicaVeterinaria_Asuncion.repositories.dtos.TutorRequestDTO;
 import com.example.ClinicaVeterinaria_Asuncion.services.TutorService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
