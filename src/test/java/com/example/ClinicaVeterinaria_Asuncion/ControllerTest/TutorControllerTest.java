@@ -30,7 +30,7 @@ public class TutorControllerTest {
         Tutor tutor1 = new Tutor();
         tutor1.setName("Jose");
         tutor1.setPhone("Gonzalez");
-        tutor1.setEmail(1234);
+        tutor1.setEmail("1234");
         tutorRepository.save(tutor1);
 
         // WHEN: Realizar la solicitud GET al endpoint

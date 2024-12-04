@@ -43,7 +43,6 @@ public class PatientController {
         if (optionalPatient.isPresent()){
             Patient existingPatient = optionalPatient.get();
             existingPatient.setName(patientDetails.getName());
-            existingPatient.setGender(patientDetails.getGender());
             existingPatient.setBirthDate(patientDetails.getBirthDate());
             existingPatient.setTutor(patientDetails.getTutor());
             existingPatient.setSpecies(patientDetails.getSpecies());
