@@ -36,4 +36,10 @@ public class TutorServices {
     public List<Tutor> findByName(String name) {
         return tutorRepository.findByName(name);
     }
+
+    public void deleteById(Long id) {
+        Tutor tutor = tutorRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Patient not found with id: " + id));
+        tutorRepository.delete(tutor);
+    }
 }

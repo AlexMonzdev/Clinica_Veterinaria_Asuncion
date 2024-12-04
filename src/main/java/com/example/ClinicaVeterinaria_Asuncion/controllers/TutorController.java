@@ -73,13 +73,13 @@ public class TutorController {
             return new ResponseEntity<>(existingTutor, HttpStatus.OK);
     }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
+    } */
 
     @DeleteMapping ("/tutor/{id}")
     public ResponseEntity<Tutor> deleteTutor (@PathVariable Long id){
-        tutorRepository.deleteById(id);
+        tutorServices.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
-    } */
+    }
 
 }
 
