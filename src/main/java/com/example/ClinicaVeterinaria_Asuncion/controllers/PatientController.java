@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/clinic")
@@ -25,10 +26,14 @@ public class PatientController {
         return patientServices.getAllService();
     }
 
-    @GetMapping("/patient/{id}")
+
+    @GetMapping ("/patient/{id}")
     public ResponseEntity<Patient> getPatientById (@PathVariable Long id){
-        patientServices.getPatientById(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+        Optional<Patient> optionalPatient = patientServices.findById(id);
+        if (optionalPatient.isPresent()){
+            return new ResponseEntity<Patient>(optionalPatient.get() , HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
 

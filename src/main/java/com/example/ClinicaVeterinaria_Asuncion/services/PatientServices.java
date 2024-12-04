@@ -8,6 +8,7 @@ import com.example.ClinicaVeterinaria_Asuncion.repositories.PatientRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PatientServices {
@@ -47,6 +48,11 @@ public class PatientServices {
                 patient.getTutor().getId()
         );
 
+
+    }
+
+    public Optional<Patient> findById(Long id) {
+        return patientRepository.findById(id);
 
     }
 }
