@@ -1,6 +1,6 @@
 package com.example.ClinicaVeterinaria_Asuncion.services;
 
-import com.example.ClinicaVeterinaria_Asuncion.dtos.TutorRequest;
+import com.example.ClinicaVeterinaria_Asuncion.dtos.TutorRequestDTO;
 import com.example.ClinicaVeterinaria_Asuncion.entities.Tutor;
 import com.example.ClinicaVeterinaria_Asuncion.repositories.TutorRepository;
 import org.springframework.stereotype.Service;
@@ -15,12 +15,12 @@ public class TutorServices {
     public TutorServices (TutorRepository tutorRepository) {
         this.tutorRepository = tutorRepository;
     }
-    public Tutor createTutor(TutorRequest tutorRequest) {
+    public Tutor createTutor(TutorRequestDTO tutorRequestDTO) {
         Tutor tutor = new Tutor();
-        tutor.setName(tutorRequest.name());
-        tutor.setEmail(tutorRequest.email());
-        tutor.setPhone(tutorRequest.phone());
-        tutor.setAddress(tutorRequest.address());
+        tutor.setName(tutorRequestDTO.name());
+        tutor.setEmail(tutorRequestDTO.email());
+        tutor.setPhone(tutorRequestDTO.phone());
+        tutor.setAddress(tutorRequestDTO.address());
 
         return tutorRepository.save(tutor);
     }
@@ -43,14 +43,14 @@ public class TutorServices {
         tutorRepository.delete(tutor);
     }
 
-    public Tutor updateTutorServices(Long id, TutorRequest tutorRequest) {
+    public Tutor updateTutorServices(Long id, TutorRequestDTO tutorRequestDTO) {
             Tutor tutor = tutorRepository.findById(id)
                     .orElseThrow(() -> new RuntimeException("Tutor not found with id: " + id));
 
-        tutor.setName(tutorRequest.name());
-        tutor.setEmail(tutorRequest.email());
-        tutor.setPhone(tutorRequest.phone());
-        tutor.setAddress(tutorRequest.address());
+        tutor.setName(tutorRequestDTO.name());
+        tutor.setEmail(tutorRequestDTO.email());
+        tutor.setPhone(tutorRequestDTO.phone());
+        tutor.setAddress(tutorRequestDTO.address());
 
         return tutorRepository.save(tutor);
     }

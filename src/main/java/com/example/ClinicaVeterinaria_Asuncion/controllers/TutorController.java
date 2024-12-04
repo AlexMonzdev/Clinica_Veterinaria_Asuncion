@@ -1,14 +1,12 @@
 package com.example.ClinicaVeterinaria_Asuncion.controllers;
 
-import com.example.ClinicaVeterinaria_Asuncion.dtos.TutorRequest;
+import com.example.ClinicaVeterinaria_Asuncion.dtos.TutorRequestDTO;
 import com.example.ClinicaVeterinaria_Asuncion.services.TutorServices;
 import com.example.ClinicaVeterinaria_Asuncion.entities.Tutor;
-import jakarta.websocket.server.PathParam;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.xml.namespace.QName;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,8 +21,8 @@ public class TutorController {
     }
 
     @PostMapping ("/tutor")
-    public ResponseEntity<Tutor> addTutor(@RequestBody TutorRequest tutorRequest) {
-        tutorServices.createTutor(tutorRequest);
+    public ResponseEntity<Tutor> addTutor(@RequestBody TutorRequestDTO tutorRequestDTO) {
+        tutorServices.createTutor(tutorRequestDTO);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
@@ -76,9 +74,9 @@ public class TutorController {
     } */
 
     @PutMapping("/tutor/{id}")
-    public ResponseEntity<Tutor> updateTutor(@PathVariable Long id, @RequestBody TutorRequest tutorRequest) {
+    public ResponseEntity<Tutor> updateTutor(@PathVariable Long id, @RequestBody TutorRequestDTO tutorRequestDTO) {
         try {
-            Tutor updatedPatient = tutorServices.updateTutorServices(id, tutorRequest);
+            Tutor updatedPatient = tutorServices.updateTutorServices(id, tutorRequestDTO);
             Tutor updateTutor = null;
             return new ResponseEntity<>(updateTutor, HttpStatus.OK);
         } catch (RuntimeException e) {
