@@ -2,8 +2,8 @@ package com.example.ClinicaVeterinaria_Asuncion.services;
 
 
 import com.example.ClinicaVeterinaria_Asuncion.dtos.PatientRequestDTO;
+import com.example.ClinicaVeterinaria_Asuncion.dtos.PatientResponseDTO;
 import com.example.ClinicaVeterinaria_Asuncion.entities.Patient;
-import com.example.ClinicaVeterinaria_Asuncion.exceptions.PatientNotFoundException;
 import com.example.ClinicaVeterinaria_Asuncion.repositories.PatientRepository;
 import org.springframework.stereotype.Service;
 
@@ -35,9 +35,20 @@ public class PatientServices {
     }
 
 
-    public void getPatientByIdService(Long id) {
-        patientRepository.findById(id)
-                .orElseThrow(() -> new PatientNotFoundException("Patient not found with id: " + id));
-    }
+    public PatientResponseDTO getPatientById(Long id) {
+        Patient patient = patientRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Patient not found with id: " + id));
+        return new PatientResponseDTO(
+                patient.getId(),
+                patient.getName(),
+                patient.getSpecies(),
+                patient.getBreed(),
+                patient.getBirthDate(),
+                patient.getTutor().getId()
+        );
 
+
+    }
 }
+
+
