@@ -3,10 +3,12 @@ package com.example.ClinicaVeterinaria_Asuncion.controllers;
 import com.example.ClinicaVeterinaria_Asuncion.dtos.TutorRequest;
 import com.example.ClinicaVeterinaria_Asuncion.services.TutorServices;
 import com.example.ClinicaVeterinaria_Asuncion.entities.Tutor;
+import jakarta.websocket.server.PathParam;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.xml.namespace.QName;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,6 +40,22 @@ public class TutorController {
             return new ResponseEntity<Tutor>(optionalTutor.get() , HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+   /* @GetMapping ("/tutor/{name}")
+        public ResponseEntity <List<Tutor>> getTutorByName(@PathParam("name") String name) {
+        Optional<Tutor> tutors = tutorServices.findByName(name);
+        return null;
+
+    } */
+
+    @GetMapping("/tutor/name/{name}")
+    public ResponseEntity<List<Tutor>> getTutorByName(@PathVariable("name") String name) {
+        List<Tutor> tutors = tutorServices.findByName(name);
+        if (tutors.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(tutors, HttpStatus.OK);
     }
 
 

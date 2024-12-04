@@ -32,4 +32,8 @@ public class TutorServices {
     public Optional<Tutor> findById(Long id) {
         return tutorRepository.findById(id);
     }
+
+    public List<Tutor> findByName(String name) {
+        return tutorRepository.findByName(name);
+    }
 }
