@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/clinic")
@@ -18,11 +19,6 @@ public class TutorController {
     public TutorController(TutorServices tutorServices) {
         this.tutorServices = tutorServices;
     }
-
-    /* @GetMapping("/tutor")
-    public List<Tutor> getAllTutors() {
-        return tutorRepository.findAll();
-    } */
 
     @PostMapping ("/tutor")
     public ResponseEntity<Tutor> addTutor(@RequestBody TutorRequest tutorRequest) {
@@ -35,7 +31,14 @@ public class TutorController {
         return ResponseEntity.ok(tutorServices.getAllTutors());
     }
 
-
+    @GetMapping ("/tutor/{id}")
+    public ResponseEntity<Tutor> getTutorsById(@PathVariable Long id) {
+        Optional<Tutor> optionalTutor = tutorServices.findById(id);
+        if (optionalTutor.isPresent()){
+            return new ResponseEntity<Tutor>(optionalTutor.get() , HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
 
 
     /*@PutMapping ("/tutor/{id}")

@@ -6,6 +6,7 @@ import com.example.ClinicaVeterinaria_Asuncion.repositories.TutorRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TutorServices {
@@ -26,5 +27,9 @@ public class TutorServices {
 
     public List<Tutor> getAllTutors() {
         return tutorRepository.findAll();
+    }
+
+    public Optional<Tutor> findById(Long id) {
+        return tutorRepository.findById(id);
     }
 }
