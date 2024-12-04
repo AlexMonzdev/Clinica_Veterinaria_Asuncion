@@ -27,11 +27,11 @@ public class PatientController {
     }
 
 
-    @GetMapping ("/patient/{id}")
-    public ResponseEntity<Patient> getPatientById (@PathVariable Long id){
+    @GetMapping("/patient/{id}")
+    public ResponseEntity<Patient> getPatientById(@PathVariable Long id) {
         Optional<Patient> optionalPatient = patientServices.findById(id);
-        if (optionalPatient.isPresent()){
-            return new ResponseEntity<Patient>(optionalPatient.get() , HttpStatus.OK);
+        if (optionalPatient.isPresent()) {
+            return new ResponseEntity<Patient>(optionalPatient.get(), HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
@@ -43,6 +43,11 @@ public class PatientController {
         return new ResponseEntity<>(patient, HttpStatus.CREATED);
     }
 
+    @DeleteMapping("/patient/{id}")
+    public ResponseEntity<Void> deletePatient(@PathVariable Long id) {
+        patientServices.deleteById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 
 
 //    @PutMapping ("/patient/{id}")
@@ -50,10 +55,6 @@ public class PatientController {
 //        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 //    }
 //
-//    @DeleteMapping ("/patient/{id}")
-//    public ResponseEntity<Patient> deletePatient (@PathVariable Long id){
-//        patientRepository.deleteById(id);
-//        return new ResponseEntity<>(HttpStatus.OK);
-//    }
+
 
 }
