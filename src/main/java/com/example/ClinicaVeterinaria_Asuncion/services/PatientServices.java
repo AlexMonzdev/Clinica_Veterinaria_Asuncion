@@ -64,6 +64,20 @@ public class PatientServices {
     }
 
 
+    public Patient updatePatientService(Long id, PatientRequestDTO patientRequestDTO) {
+        Patient patient = patientRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Patient not found with id: " + id));
+
+        patient.setName(patientRequestDTO.name());
+        patient.setSpecies(patientRequestDTO.species());
+        patient.setBreed(patientRequestDTO.breed());
+        patient.setBirthDate(patientRequestDTO.birthDate());
+        patient.setTutor(patientRequestDTO.tutor());
+        return patientRepository.save(patient);
+
+    }
+
 }
+
 
 

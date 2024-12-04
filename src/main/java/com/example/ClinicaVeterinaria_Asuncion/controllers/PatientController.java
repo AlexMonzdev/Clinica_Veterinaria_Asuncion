@@ -49,12 +49,15 @@ public class PatientController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-
-//    @PutMapping ("/patient/{id}")
-//    public ResponseEntity<Patient> updatePatient(@PathVariable Long id, @RequestBody Patient patientDetails){
-//        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//    }
-//
+    @PutMapping("/patient/{id}")
+    public ResponseEntity<Patient> updatePatient(@PathVariable Long id, @RequestBody PatientRequestDTO patientRequestDTO) {
+        try {
+            Patient updatedPatient = patientServices.updatePatientService(id, patientRequestDTO);
+            return new ResponseEntity<>(updatedPatient, HttpStatus.OK);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 
 
 }
