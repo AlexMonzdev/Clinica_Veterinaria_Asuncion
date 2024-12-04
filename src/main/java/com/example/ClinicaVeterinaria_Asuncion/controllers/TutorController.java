@@ -23,7 +23,7 @@ public class TutorController {
     @PostMapping ("/tutor")
     public ResponseEntity<Tutor> addTutor(@RequestBody TutorRequest tutorRequest) {
         tutorServices.createTutor(tutorRequest);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping ("/tutor")
