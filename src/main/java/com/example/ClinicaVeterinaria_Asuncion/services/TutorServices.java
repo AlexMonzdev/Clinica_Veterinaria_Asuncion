@@ -39,7 +39,20 @@ public class TutorServices {
 
     public void deleteById(Long id) {
         Tutor tutor = tutorRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Patient not found with id: " + id));
+                .orElseThrow(() -> new RuntimeException("Tutor not found with id: " + id));
         tutorRepository.delete(tutor);
     }
-}
+
+    public Tutor updateTutorServices(Long id, TutorRequest tutorRequest) {
+            Tutor tutor = tutorRepository.findById(id)
+                    .orElseThrow(() -> new RuntimeException("Tutor not found with id: " + id));
+
+        tutor.setName(tutorRequest.name());
+        tutor.setEmail(tutorRequest.email());
+        tutor.setPhone(tutorRequest.phone());
+        tutor.setAddress(tutorRequest.address());
+
+        return tutorRepository.save(tutor);
+    }
+
+        }

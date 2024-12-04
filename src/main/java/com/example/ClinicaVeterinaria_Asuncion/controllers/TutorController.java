@@ -60,7 +60,7 @@ public class TutorController {
 
 
     /*@PutMapping ("/tutor/{id}")
-    public ResponseEntity<Tutor> updateTutor(@PathVariable Long id, @RequestBody Tutor tutorDetails){
+    public ResponseEntity<Tutor> updateTutor(@PathVariable Long id, @RequestBody TutorRequestDTO tutorDetails){
         Optional<Tutor> optionalTutor = tutorRepository.findById(id);
 
         if (optionalTutor.isPresent()){
@@ -74,6 +74,17 @@ public class TutorController {
     }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     } */
+
+    @PutMapping("/tutor/{id}")
+    public ResponseEntity<Tutor> updateTutor(@PathVariable Long id, @RequestBody TutorRequest tutorRequest) {
+        try {
+            Tutor updatedPatient = tutorServices.updateTutorServices(id, tutorRequest);
+            Tutor updateTutor = null;
+            return new ResponseEntity<>(updateTutor, HttpStatus.OK);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 
     @DeleteMapping ("/tutor/{id}")
     public ResponseEntity<Tutor> deleteTutor (@PathVariable Long id){
