@@ -5,6 +5,8 @@ import com.example.ClinicaVeterinaria_Asuncion.entities.Tutor;
 import com.example.ClinicaVeterinaria_Asuncion.repositories.TutorRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TutorServices {
     private final TutorRepository tutorRepository;
@@ -20,5 +22,9 @@ public class TutorServices {
         tutor.setAddress(tutorRequest.address());
 
         return tutorRepository.save(tutor);
+    }
+
+    public List<Tutor> getAllTutors() {
+        return tutorRepository.findAll();
     }
 }

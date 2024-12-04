@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/clinic")
 public class TutorController {
@@ -28,17 +30,15 @@ public class TutorController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-
-   /*  @GetMapping("/tutor/{phoneNumber}")
-    public ResponseEntity<Tutor> getTutorByPhoneNumber(@PathVariable int phoneNumber) {
-        Optional<Tutor> optionalTutor = tutorRepository.findByPhoneNumber(phoneNumber);
-        if (optionalTutor.isPresent()) {
-            return new ResponseEntity<>(optionalTutor.get(), HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    @GetMapping ("/tutor")
+    public ResponseEntity <List<Tutor>> getAllTutors(){
+        return ResponseEntity.ok(tutorServices.getAllTutors());
     }
 
-    @PutMapping ("/tutor/{id}")
+
+
+
+    /*@PutMapping ("/tutor/{id}")
     public ResponseEntity<Tutor> updateTutor(@PathVariable Long id, @RequestBody Tutor tutorDetails){
         Optional<Tutor> optionalTutor = tutorRepository.findById(id);
 
