@@ -28,5 +28,4 @@ public class Tutor {
     @Column (nullable = false)
     private String address;
 
-
 }
