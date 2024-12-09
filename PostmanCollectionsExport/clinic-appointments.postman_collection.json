@@ -1,0 +1,132 @@
+{
+	"info": {
+		"_postman_id": "b1f6efff-d268-45f3-a19e-12a4260463ad",
+		"name": "clinic/appointments",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39117957",
+		"_collection_link": "https://shoplist.postman.co/workspace/clinica~f7d1d02d-b53f-45fc-9a0f-27e3c4ede1cc/collection/39117957-b1f6efff-d268-45f3-a19e-12a4260463ad?action=share&source=collection_link&creator=39117957"
+	},
+	"item": [
+		{
+			"name": "Get Appointments",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/clinic/appointment",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"clinic",
+						"appointment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get appt. by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/clinic/appointment/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"clinic",
+						"appointment",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Appointments",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"date\": \"2024-12-05\",\n  \"time\": \"11:56:52\",\n  \"reason\": \"Some reason\",\n  \"patient\": {\n    \"id\": 1\n  }\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/clinic/appointment",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"clinic",
+						"appointment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Appt.",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/clinic/appointment/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"clinic",
+						"appointment",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put Appt.",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"date\": \"2024-12-05\",\n  \"time\": \"11:56:52\",\n  \"reason\": \"2nd reason\",\n  \"patient\": {\n    \"id\": 1\n  }\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/clinic/appointment/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"clinic",
+						"appointment",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

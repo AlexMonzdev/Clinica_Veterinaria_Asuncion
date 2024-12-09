@@ -16,6 +16,15 @@ El sistema será implementado como una **API REST** desarrollada en **Java Sprin
 - [x] - Los productos añadidos en la base de datos aparecen en el front-end, identificados por su nombre
 - [x] - La eliminación y edición de productos en la base de datos se puede ver en el front-end
 - [x] - CRUD probado con Postman
+-------------------------------------------------
+- [x] - Cambio a base de datos MySQL en Sprint 2
+- [x] - Utilizar Clases DTO & Services
+- [x] - Tests de Acceptación
+- [x] - Tests Unitarios
+- [x] - Export Postman Collections con Endpoints
+- [x] - Gestor de Citas
+- [x] - Estadísticas Generales
+      
 
 ## Tecnologias Utilizadas
 
@@ -50,7 +59,19 @@ El sistema será implementado como una **API REST** desarrollada en **Java Sprin
 - [x] <img src= "https://img.shields.io/badge/Lucid-282C33?logo=lucid&logoColor=fff&style=for-the-badge"/>
 
 
+## 🌈 Documentación Endpoints
+
+### Diagram ER Database
+![ER Diagram2](https://github.com/aSACo-FactoriaF5/ClinicaVeterinaria_Asuncion/blob/main/Images/ER%20Diagram2.png)
+
+### Postman Collections
+![Postman](https://github.com/aSACo-FactoriaF5/ClinicaVeterinaria_Asuncion/blob/main/Images/Postman%20Collections.png)
+
+
 ## Imagenes
+
+### Database ER
+
 
 ### Front End Screenshot
 ![FrontEnd](https://github.com/aSACo-FactoriaF5/ClinicaVeterinaria_Asuncion/blob/main/Images/Inicio%20Frontend.png)
