@@ -22,8 +22,8 @@ public class TutorController {
 
     @PostMapping ("/tutor")
     public ResponseEntity<Tutor> addTutor(@RequestBody TutorRequestDTO tutorRequestDTO) {
-        tutorServices.createTutor(tutorRequestDTO);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        var tutorCreated = tutorServices.createTutor(tutorRequestDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(tutorCreated);
     }
 
     @GetMapping ("/tutor")
