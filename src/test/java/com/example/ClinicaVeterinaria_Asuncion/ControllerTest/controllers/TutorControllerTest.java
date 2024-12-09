@@ -1,4 +1,4 @@
-package com.example.ClinicaVeterinaria_Asuncion.ControllerTest;
+package com.example.ClinicaVeterinaria_Asuncion.ControllerTest.controllers;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -29,8 +29,9 @@ public class TutorControllerTest {
 
         Tutor tutor1 = new Tutor();
         tutor1.setName("Jose");
-        tutor1.setPhone("Gonzalez");
-        tutor1.setEmail("1234");
+        tutor1.setPhone("002323232");
+        tutor1.setEmail("hose@gamil.com");
+        tutor1.setAddress("C/ Melancolia 1");
         tutorRepository.save(tutor1);
 
         // WHEN: Realizar la solicitud GET al endpoint
@@ -40,9 +41,10 @@ public class TutorControllerTest {
                 .andExpect(status().isOk())
                 // Verificar que el JSON contiene al menos un tutor con los datos correctos
                 .andExpect(jsonPath("$.length()").value(1))
-                .andExpect(jsonPath("$[0].firstname").value("Jose"))
-                .andExpect(jsonPath("$[0].lastname").value("Gonzalez"))
-                .andExpect(jsonPath("$[0].phoneNumber").value(1234));
+                .andExpect(jsonPath("$[0].name").value("Jose"))
+                .andExpect(jsonPath("$[0].phone").value("002323232"))
+                .andExpect(jsonPath("$[0].email").value("hose@gamil.com"))
+                .andExpect(jsonPath("$[0].address").value("C/ Melancolia 1"));
     }
 
 
