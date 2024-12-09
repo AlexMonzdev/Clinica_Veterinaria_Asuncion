@@ -1,0 +1,148 @@
+{
+	"info": {
+		"_postman_id": "0878e9a9-322e-488d-8a30-8d875e6f0f68",
+		"name": "clinic/patient",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39117957",
+		"_collection_link": "https://shoplist.postman.co/workspace/clinica~f7d1d02d-b53f-45fc-9a0f-27e3c4ede1cc/collection/39876177-0878e9a9-322e-488d-8a30-8d875e6f0f68?action=share&source=collection_link&creator=39117957"
+	},
+	"item": [
+		{
+			"name": "GET items",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/clinic/patient",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"clinic",
+						"patient"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get by Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/clinic/patient/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"clinic",
+						"patient",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Create Patient",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"{\r",
+							"    \"name\": Avocado,\r",
+							"    \"price\": 1.00,\r",
+							"    \"isBought\": false\r",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Buddy\",\r\n  \"species\": \"dog\",\r\n  \"breed\": \"Labrador Retriever\",\r\n  \"age\": 4,\r\n  \"tutor\": {\"id\": \"1\" \r\n  }  \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/clinic/patient",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"clinic",
+						"patient"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Patient",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Max\",\r\n  \"gender\": \"Male\",\r\n  \"birthDate\": \"2018-05-12\",\r\n  \"tutor\": {\r\n    \"id\": 1\r\n  },\r\n  \"species\": \"Dog\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/clinic/patient/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"clinic",
+						"patient",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE item",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/clinic/patient/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"clinic",
+						"patient",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
