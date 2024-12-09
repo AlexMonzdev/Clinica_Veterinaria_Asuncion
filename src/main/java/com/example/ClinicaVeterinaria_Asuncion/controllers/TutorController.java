@@ -20,32 +20,26 @@ public class TutorController {
         this.tutorServices = tutorServices;
     }
 
-    @PostMapping ("/tutor")
+    @PostMapping("/tutor")
     public ResponseEntity<Tutor> addTutor(@RequestBody TutorRequestDTO tutorRequestDTO) {
         var tutorCreated = tutorServices.createTutor(tutorRequestDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(tutorCreated);
     }
 
-    @GetMapping ("/tutor")
-    public ResponseEntity <List<Tutor>> getAllTutors(){
+    @GetMapping("/tutor")
+    public ResponseEntity<List<Tutor>> getAllTutors() {
         return ResponseEntity.ok(tutorServices.getAllTutors());
     }
 
-    @GetMapping ("/tutor/{id}")
+    @GetMapping("/tutor/{id}")
     public ResponseEntity<Tutor> getTutorsById(@PathVariable Long id) {
         Optional<Tutor> optionalTutor = tutorServices.findById(id);
-        if (optionalTutor.isPresent()){
-            return new ResponseEntity<Tutor>(optionalTutor.get() , HttpStatus.OK);
+        if (optionalTutor.isPresent()) {
+            return new ResponseEntity<Tutor>(optionalTutor.get(), HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-   /* @GetMapping ("/tutor/{name}")
-        public ResponseEntity <List<Tutor>> getTutorByName(@PathParam("name") String name) {
-        Optional<Tutor> tutors = tutorServices.findByName(name);
-        return null;
-
-    } */
 
     @GetMapping("/tutor/name/{name}")
     public ResponseEntity<List<Tutor>> getTutorByName(@PathVariable("name") String name) {
@@ -56,22 +50,6 @@ public class TutorController {
         return new ResponseEntity<>(tutors, HttpStatus.OK);
     }
 
-
-    /*@PutMapping ("/tutor/{id}")
-    public ResponseEntity<Tutor> updateTutor(@PathVariable Long id, @RequestBody TutorRequestDTO tutorDetails){
-        Optional<Tutor> optionalTutor = tutorRepository.findById(id);
-
-        if (optionalTutor.isPresent()){
-            Tutor existingTutor = optionalTutor.get();
-            existingTutor.setName(tutorDetails.getName());
-            existingTutor.setPhone(tutorDetails.getPhone());
-            existingTutor.setEmail(tutorDetails.getEmail());
-
-            tutorRepository.save(existingTutor);
-            return new ResponseEntity<>(existingTutor, HttpStatus.OK);
-    }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    } */
 
     @PutMapping("/tutor/{id}")
     public ResponseEntity<Tutor> updateTutor(@PathVariable Long id, @RequestBody TutorRequestDTO tutorRequestDTO) {
@@ -84,8 +62,8 @@ public class TutorController {
         }
     }
 
-    @DeleteMapping ("/tutor/{id}")
-    public ResponseEntity<Tutor> deleteTutor (@PathVariable Long id){
+    @DeleteMapping("/tutor/{id}")
+    public ResponseEntity<Tutor> deleteTutor(@PathVariable Long id) {
         tutorServices.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
