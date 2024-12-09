@@ -92,6 +92,36 @@ El sistema será implementado como una **API REST** desarrollada en **Java Sprin
 ![project](https://github.com/aSACo-FactoriaF5/ClinicaVeterinaria_Asuncion/blob/main/Images/Project%20View.png)
 
 
+## Endpoints Ejemplos
+
+### **Registrar un tutor**
+
+- **Método HTTP:** POST
+- **URL: POST/tutor**
+- **Request Body:**
+
+```
+{
+  "name": "Alice Johnson",
+  "email": "alice.johnson@email.com",
+  "phone": "987654321",
+  "address": "123 Meadow Lane"
+}
+
+```
+- **Response Body:**
+
+```
+{
+  "id": 1,
+  "name": "Alice Johnson",
+  "email": "alice.johnson@email.com",
+  "phone": "987654321",
+  "address": "123 Meadow Lane"
+}
+
+```
+  
 
 ## Contributors
 - **Carla Sanchez**
