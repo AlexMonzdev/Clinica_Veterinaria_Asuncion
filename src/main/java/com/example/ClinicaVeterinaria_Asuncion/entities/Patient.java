@@ -1,15 +1,17 @@
 package com.example.ClinicaVeterinaria_Asuncion.entities;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.time.Period;
 
+@Entity
 @Getter
 @Setter
-@Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +24,7 @@ public class Patient {
     private String breed;
     @Column
     private LocalDate birthDate;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "idTutor", nullable = false)
     private Tutor tutor;
 

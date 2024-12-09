@@ -2,8 +2,7 @@ package com.example.ClinicaVeterinaria_Asuncion.entities;
 
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -11,6 +10,9 @@ import java.time.LocalTime;
 @Entity
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Appointments {
 
     @Id
