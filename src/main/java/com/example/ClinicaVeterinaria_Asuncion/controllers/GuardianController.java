@@ -20,18 +20,18 @@ public class GuardianController {
         this.guardianServices = guardianServices;
     }
 
-    @PostMapping("/guardian")
+    @PostMapping("/guardians")
     public ResponseEntity<Guardian> addGuardian(@RequestBody GuardianRequestDTO guardianRequestDTO) {
         var guardianCreated = guardianServices.createGuardian(guardianRequestDTO);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @GetMapping("/guardian")
+    @GetMapping("/guardians")
     public ResponseEntity<List<Guardian>> getAllGuardian() {
         return ResponseEntity.ok(guardianServices.getAllGuardian());
     }
 
-    @GetMapping("/guardian/{id}")
+    @GetMapping("/guardians/:id")
     public ResponseEntity<Guardian> getGuardianById(@PathVariable Long id) {
         Optional<Guardian> optionalGuardian = guardianServices.findById(id);
         if (optionalGuardian.isPresent()) {
@@ -51,7 +51,7 @@ public class GuardianController {
     }
 
 
-    @PutMapping("/guardian/{id}")
+    @PutMapping("/guardians/:id")
     public ResponseEntity<Guardian> updateGuardian(@PathVariable Long id, @RequestBody GuardianRequestDTO guardianRequestDTO) {
         try {
             Guardian updatedPatient = guardianServices.updateGuardianServices(id, guardianRequestDTO);
@@ -62,7 +62,7 @@ public class GuardianController {
         }
     }
 
-    @DeleteMapping("/guardian/{id}")
+    @DeleteMapping("/guardians/:id")
     public ResponseEntity<Guardian> deleteGuardian(@PathVariable Long id) {
         guardianServices.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
