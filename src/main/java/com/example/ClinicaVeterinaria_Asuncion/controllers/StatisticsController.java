@@ -2,7 +2,6 @@ package com.example.ClinicaVeterinaria_Asuncion.controllers;
 
 import com.example.ClinicaVeterinaria_Asuncion.dtos.StatisticsResponseDTO;
 import com.example.ClinicaVeterinaria_Asuncion.services.StatisticsService;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +19,7 @@ public class StatisticsController {
 
     @GetMapping("/stats")
     public ResponseEntity<StatisticsResponseDTO> getGlobalStats(){
-        StatisticsResponseDTO stats = statisticsService.coutStats();
+        StatisticsResponseDTO stats = statisticsService.countStats();
         return ResponseEntity.ok(stats);
     }
 

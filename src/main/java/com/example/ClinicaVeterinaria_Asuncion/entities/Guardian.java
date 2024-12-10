@@ -10,9 +10,9 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table (name = "tutors")
+@Table (name = "guardian")
 
-public class Tutor {
+public class Guardian {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)

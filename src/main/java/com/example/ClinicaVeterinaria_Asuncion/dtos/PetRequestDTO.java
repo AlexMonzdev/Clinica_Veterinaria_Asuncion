@@ -1,13 +1,13 @@
 package com.example.ClinicaVeterinaria_Asuncion.dtos;
 
-import com.example.ClinicaVeterinaria_Asuncion.entities.Tutor;
+import com.example.ClinicaVeterinaria_Asuncion.entities.Guardian;
 
 import java.time.LocalDate;
 
-public record PatientRequestDTO(
+public record PetRequestDTO(
    String name,
    String species,
    String breed,
    LocalDate birthDate,
-   Tutor tutor
+   Guardian guardian
 ){}

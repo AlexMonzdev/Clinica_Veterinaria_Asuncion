@@ -26,6 +26,6 @@ public class Appointments {
     private String reason;
     @ManyToOne
     @JoinColumn(name = "idPatient", nullable = false)
-    private Patient patient;
+    private Pet pet;
 
 }

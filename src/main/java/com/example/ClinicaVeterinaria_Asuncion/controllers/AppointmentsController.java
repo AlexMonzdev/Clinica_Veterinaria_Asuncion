@@ -2,10 +2,7 @@ package com.example.ClinicaVeterinaria_Asuncion.controllers;
 
 
 import com.example.ClinicaVeterinaria_Asuncion.dtos.AppointmentsRequestDTO;
-import com.example.ClinicaVeterinaria_Asuncion.dtos.TutorRequestDTO;
 import com.example.ClinicaVeterinaria_Asuncion.entities.Appointments;
-import com.example.ClinicaVeterinaria_Asuncion.entities.Patient;
-import com.example.ClinicaVeterinaria_Asuncion.entities.Tutor;
 import com.example.ClinicaVeterinaria_Asuncion.services.AppointmentsServices;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
