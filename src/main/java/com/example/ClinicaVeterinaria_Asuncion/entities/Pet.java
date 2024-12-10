@@ -12,7 +12,7 @@ import java.time.Period;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Patient {
+public class Pet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -25,8 +25,8 @@ public class Patient {
     @Column
     private LocalDate birthDate;
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "idTutor", nullable = false)
-    private Tutor tutor;
+    @JoinColumn(name = "idGuardian", nullable = false)
+    private Guardian guardian;
 
 
     public int getAge() {

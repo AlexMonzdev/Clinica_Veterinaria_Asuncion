@@ -25,7 +25,7 @@ public class AppointmentsServices {
         appointments.setLocalDate(appointmentsRequestDTO.date());
         appointments.setLocalTime(appointmentsRequestDTO.time());
         appointments.setReason(appointmentsRequestDTO.reason());
-        appointments.setPatient(appointmentsRequestDTO.patient());
+        appointments.setPet(appointmentsRequestDTO.pet());
         appointmentsRepository.save(appointments);
     }
 
@@ -41,12 +41,12 @@ public class AppointmentsServices {
 
     public Appointments updateAppointmentsServices(Long id, AppointmentsRequestDTO appointmentsRequestDTO) {
             Appointments appointments = appointmentsRepository.findById(id)
-                    .orElseThrow(() -> new RuntimeException("Tutor not found with id: " + id));
+                    .orElseThrow(() -> new RuntimeException("Guardian not found with id: " + id));
 
             appointments.setLocalDate(appointmentsRequestDTO.date());
             appointments.setLocalTime(appointmentsRequestDTO.time());
             appointments.setReason(appointmentsRequestDTO.reason());
-            appointments.setPatient(appointmentsRequestDTO.patient());
+            appointments.setPet(appointmentsRequestDTO.pet());
            return appointmentsRepository.save(appointments);
         }
     }

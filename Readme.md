@@ -94,10 +94,10 @@ El sistema será implementado como una **API REST** desarrollada en **Java Sprin
 
 ## Endpoints Ejemplos
 
-### **Registrar un tutor**
+### **Registrar un guardian**
 
 - **Método HTTP:** POST
-- **URL: POST/tutor**
+- **URL: POST/guardian**
 - **Request Body:**
 
 ```
