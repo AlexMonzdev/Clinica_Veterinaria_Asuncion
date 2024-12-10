@@ -1,7 +1,7 @@
 package com.example.ClinicaVeterinaria_Asuncion.ControllerTest.controllers;
 
-import com.example.ClinicaVeterinaria_Asuncion.controllers.PatientController;
-import com.example.ClinicaVeterinaria_Asuncion.services.PatientServices;
+import com.example.ClinicaVeterinaria_Asuncion.controllers.PetController;
+import com.example.ClinicaVeterinaria_Asuncion.services.PetServices;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -13,14 +13,14 @@ import org.springframework.test.web.servlet.MockMvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(PatientController.class)
-public class PatientAcceptanceTest {
+@WebMvcTest(PetController.class)
+public class PetAcceptanceTest {
 
     @Autowired
     MockMvc mockMvc;
 
     @MockBean
-    private PatientServices patientServices;
+    private PetServices petServices;
 
     @Test
     void createPatient() throws Exception {
@@ -30,7 +30,7 @@ public class PatientAcceptanceTest {
                 "species": "dog",
                 "breed": "american",
                 "birthDate": "2024-12-05",
-                "tutor": {"id": "1"
+                "guardian": {"id": "1"
                           }
             }
         """;
@@ -42,12 +42,12 @@ public class PatientAcceptanceTest {
                 "species": "dog",
                 "breed": "american",
                 "birthDate": "2024-12-05",
-                "tutor": {"id": "1"
+                "guardian": {"id": "1"
                           }
             }
         """;
 
-        mockMvc.perform(post("/api/clinic/patient")
+        mockMvc.perform(post("/api/clinic/pet")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(patientRequestJson)) // Enviamos el JSON manualmente como el cuerpo de la solicitud
                 .andExpect(status().isCreated());

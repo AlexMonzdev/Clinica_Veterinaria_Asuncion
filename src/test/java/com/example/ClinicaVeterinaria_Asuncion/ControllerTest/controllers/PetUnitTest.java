@@ -1,9 +1,9 @@
 package com.example.ClinicaVeterinaria_Asuncion.ControllerTest.controllers;
 
-import com.example.ClinicaVeterinaria_Asuncion.entities.Patient;
-import com.example.ClinicaVeterinaria_Asuncion.entities.Tutor;
-import com.example.ClinicaVeterinaria_Asuncion.repositories.PatientRepository;
-import com.example.ClinicaVeterinaria_Asuncion.repositories.TutorRepository;
+import com.example.ClinicaVeterinaria_Asuncion.entities.Guardian;
+import com.example.ClinicaVeterinaria_Asuncion.entities.Pet;
+import com.example.ClinicaVeterinaria_Asuncion.repositories.PetRepository;
+import com.example.ClinicaVeterinaria_Asuncion.repositories.GuardianRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,39 +16,39 @@ import java.util.List;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
-public class PatientUnitTest {
+public class PetUnitTest {
 
     @Autowired
-    private PatientRepository patientRepository;
+    private PetRepository petRepository;
     @Autowired
-    private TutorRepository tutorRepository;
+    private GuardianRepository guardianRepository;
 
 
     @Test
     void shouldReturnAllPatients() {
 
-        Tutor tutor = Tutor.builder()
+        Guardian guardian = Guardian.builder()
                 .name("John Doe")
                 .phone("123456789")
                 .email("johndoe@example.com")
                 .address("123 Main Street")
                 .build();
-        tutorRepository.save(tutor);
+        guardianRepository.save(guardian);
 
-        Patient patient = Patient.builder()
+        Pet pet = Pet.builder()
                 .name("Coco")
                 .species("dog")
                 .breed("labrador")
                 .birthDate(LocalDate.now())
-                .tutor(tutor)
+                .guardian(guardian)
                 .build();
 
-        patientRepository.save(patient);
+        petRepository.save(pet);
 
-        List<Patient> patientList = patientRepository.findAll();
+        List<Pet> petList = petRepository.findAll();
 
-        Assertions.assertThat(patientList).isNotNull();
-        Assertions.assertThat(patientList.size()).isEqualTo(1);
+        Assertions.assertThat(petList).isNotNull();
+        Assertions.assertThat(petList.size()).isEqualTo(1);
 
     }
 

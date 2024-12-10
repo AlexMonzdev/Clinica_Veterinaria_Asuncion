@@ -1,8 +1,6 @@
 package com.example.ClinicaVeterinaria_Asuncion.ControllerTest.controllers;
 
 import com.example.ClinicaVeterinaria_Asuncion.controllers.AppointmentsController;
-import com.example.ClinicaVeterinaria_Asuncion.dtos.AppointmentsRequestDTO;
-import com.example.ClinicaVeterinaria_Asuncion.entities.Patient;
 import com.example.ClinicaVeterinaria_Asuncion.services.AppointmentsServices;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +28,7 @@ public class AppoimentAcceptanceTest {
                         "date": "2024-12-15",
                         "time": "14:30:00",
                         "reason": "Vacunación",
-                        "patient": {
+                        "pet": {
                             "id": "1",
                             "name": "Fido",
                             "species": "dog",
@@ -46,7 +44,7 @@ public class AppoimentAcceptanceTest {
                         "date": "2024-12-15",
                         "time": "14:30:00",
                         "reason": "Vacunación",
-                        "patient": {
+                        "pet": {
                             "id": "1",
                             "name": "Fido",
                             "species": "dog",

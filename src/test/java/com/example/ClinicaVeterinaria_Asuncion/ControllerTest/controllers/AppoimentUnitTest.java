@@ -1,11 +1,11 @@
 package com.example.ClinicaVeterinaria_Asuncion.ControllerTest.controllers;
 
 import com.example.ClinicaVeterinaria_Asuncion.entities.Appointments;
-import com.example.ClinicaVeterinaria_Asuncion.entities.Patient;
-import com.example.ClinicaVeterinaria_Asuncion.entities.Tutor;
+import com.example.ClinicaVeterinaria_Asuncion.entities.Pet;
+import com.example.ClinicaVeterinaria_Asuncion.entities.Guardian;
 import com.example.ClinicaVeterinaria_Asuncion.repositories.AppointmentsRepository;
-import com.example.ClinicaVeterinaria_Asuncion.repositories.PatientRepository;
-import com.example.ClinicaVeterinaria_Asuncion.repositories.TutorRepository;
+import com.example.ClinicaVeterinaria_Asuncion.repositories.PetRepository;
+import com.example.ClinicaVeterinaria_Asuncion.repositories.GuardianRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,36 +25,36 @@ public class AppoimentUnitTest {
     private AppointmentsRepository appointmentsRepository;
 
     @Autowired
-    private PatientRepository patientRepository;
+    private PetRepository petRepository;
 
     @Autowired
-    private TutorRepository tutorRepository;
+    private GuardianRepository guardianRepository;
 
     @Test
     void shouldReturnAllAppoiment() {
 
-            Tutor tutor = Tutor.builder()
+            Guardian guardian = Guardian.builder()
                     .name("John Doe")
                     .phone("123456789")
                     .email("johndoe@example.com")
                     .address("123 Main Street")
                     .build();
-            tutorRepository.save(tutor);
+            guardianRepository.save(guardian);
 
-            Patient patient = Patient.builder()
+            Pet pet = Pet.builder()
                     .name("Coco")
                     .species("dog")
                     .breed("labrador")
                     .birthDate(LocalDate.now())
-                    .tutor(tutor)
+                    .guardian(guardian)
                     .build();
-            patientRepository.save(patient);
+            petRepository.save(pet);
 
             Appointments appointment = Appointments.builder()
                     .localDate(LocalDate.of(2024, 12, 15))
                     .localTime(LocalTime.of(14, 30))
                     .reason("Vacunación")
-                    .patient(patient)
+                    .pet(pet)
                     .build();
             appointmentsRepository.save(appointment);
 
@@ -68,13 +68,13 @@ public class AppoimentUnitTest {
             Assertions.assertThat(retrievedAppointment.getLocalTime()).isEqualTo(LocalTime.of(14, 30));
             Assertions.assertThat(retrievedAppointment.getReason()).isEqualTo("Vacunación");
 
-            Patient retrievedPatient = retrievedAppointment.getPatient();
-            Assertions.assertThat(retrievedPatient).isNotNull();
-            Assertions.assertThat(retrievedPatient.getName()).isEqualTo("Coco");
+            Pet retrievedPet = retrievedAppointment.getPet();
+            Assertions.assertThat(retrievedPet).isNotNull();
+            Assertions.assertThat(retrievedPet.getName()).isEqualTo("Coco");
 
 
-            Tutor retrievedTutor = retrievedPatient.getTutor();
-            Assertions.assertThat(retrievedTutor).isNotNull();
-            Assertions.assertThat(retrievedTutor.getName()).isEqualTo("John Doe");
+            Guardian retrievedGuardian = retrievedPet.getGuardian();
+            Assertions.assertThat(retrievedGuardian).isNotNull();
+            Assertions.assertThat(retrievedGuardian.getName()).isEqualTo("John Doe");
     }
 }
