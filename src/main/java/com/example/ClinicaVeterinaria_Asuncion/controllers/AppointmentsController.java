@@ -22,18 +22,19 @@ public class AppointmentsController {
 
     }
 
-    @GetMapping("/appointment")
+    @GetMapping("/appointments")
     public List<Appointments> getAllPatients() {
         return appointmentsServices.findAll();
     }
 
-    @PostMapping("/appointment")
+    @PostMapping("/appointments")
     public ResponseEntity<AppointmentsRequestDTO> addAppointments(@RequestBody AppointmentsRequestDTO appointmentsRequestDTO) {
 
       appointmentsServices.createAppointmentServices(appointmentsRequestDTO);
       return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
+    /*
     @GetMapping ("/appointment/{id}")
     public ResponseEntity<Appointments> getAppointmentsById(@PathVariable Long id) {
         Optional<Appointments> optionalAppointments = appointmentsServices.findById(id);
@@ -41,15 +42,19 @@ public class AppointmentsController {
             return new ResponseEntity<>(optionalAppointments.get() , HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
+    } */
 
-    @DeleteMapping ("/appointment/{id}")
+    @GetMapping ("/appointments/next?petId=:id")    //Next Appointments by Pet ID
+
+    @GetMapping ("/appointments/past?petId=:id")    //Past Appointments by Pet ID Ordenadas por fecha de mas cercana a mas lejana
+
+    @DeleteMapping ("/appointments:id")
     public ResponseEntity<Appointments> deleteAppointments (@PathVariable Long id){
         appointmentsServices.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PutMapping("/appointment/{id}")
+    @PutMapping("/appointments:id")
     public ResponseEntity<Appointments> updateAppointments(@PathVariable Long id, @RequestBody AppointmentsRequestDTO appointmentsRequestDTO) {
         try {
             Appointments updatedAppointment = appointmentsServices.updateAppointmentsServices(id, appointmentsRequestDTO);
