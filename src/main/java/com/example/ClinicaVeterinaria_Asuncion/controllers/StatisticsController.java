@@ -17,7 +17,7 @@ public class StatisticsController {
         this.statisticsService = statisticsService;
     }
 
-    @GetMapping("/stats")
+    @GetMapping("/statistics/global")
     public ResponseEntity<StatisticsResponseDTO> getGlobalStats(){
         StatisticsResponseDTO stats = statisticsService.countStats();
         return ResponseEntity.ok(stats);
