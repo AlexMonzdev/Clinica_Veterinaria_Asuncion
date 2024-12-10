@@ -41,14 +41,14 @@ public class GuardianController {
     }
 
 
-    @GetMapping("/guardian/name/{name}")
+    /* @GetMapping("/guardian/name/{name}")
     public ResponseEntity<List<Guardian>> getGuardianByName(@PathVariable("name") String name) {
         List<Guardian> guardian = guardianServices.findByName(name);
         if (guardian.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(guardian, HttpStatus.OK);
-    }
+    } */   // no es necesario en Sprint3
 
 
     @PutMapping("/guardians/:id")
