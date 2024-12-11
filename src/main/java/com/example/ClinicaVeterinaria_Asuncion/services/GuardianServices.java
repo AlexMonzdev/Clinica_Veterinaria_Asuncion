@@ -1,7 +1,9 @@
 package com.example.ClinicaVeterinaria_Asuncion.services;
 
 import com.example.ClinicaVeterinaria_Asuncion.dtos.GuardianRequestDTO;
+import com.example.ClinicaVeterinaria_Asuncion.dtos.GuardianResponseDTO;
 import com.example.ClinicaVeterinaria_Asuncion.entities.Guardian;
+import com.example.ClinicaVeterinaria_Asuncion.mappers.GuardianMapper;
 import com.example.ClinicaVeterinaria_Asuncion.repositories.GuardianRepository;
 import org.springframework.stereotype.Service;
 
@@ -15,22 +17,22 @@ public class GuardianServices {
     public GuardianServices(GuardianRepository guardianRepository) {
         this.guardianRepository = guardianRepository;
     }
-    public Guardian createGuardian(GuardianRequestDTO guardianRequestDTO) {
-        Guardian guardian = new Guardian();
-        guardian.setName(guardianRequestDTO.name());
-        guardian.setEmail(guardianRequestDTO.email());
-        guardian.setPhone(guardianRequestDTO.phone());
-        guardian.setAddress(guardianRequestDTO.address());
 
-        return guardianRepository.save(guardian);
+    public GuardianResponseDTO createGuardian(GuardianRequestDTO guardianRequestDTO) {
+        Guardian guardian = GuardianMapper.toEntity(guardianRequestDTO);
+        Guardian saveGuardian = guardianRepository.save(guardian);
+        return GuardianMapper.toResponse(saveGuardian);
     }
 
-    public List<Guardian> getAllGuardian() {
-        return guardianRepository.findAll();
+    public List<GuardianResponseDTO> getAllGuardian() {
+        List<Guardian> guardianList = guardianRepository.findAll();
+        return guardianList.stream().map(GuardianMapper::toResponse).toList();
     }
 
-    public Optional<Guardian> findById(Long id) {
-        return guardianRepository.findById(id);
+    public GuardianResponseDTO findById(Long id) {
+        Guardian guardian = guardianRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Guardian not found"));
+        return GuardianMapper.toResponse(guardian);
     }
 
     public List<Guardian> findByName(String name) {
@@ -43,16 +45,15 @@ public class GuardianServices {
         guardianRepository.delete(guardian);
     }
 
-    public Guardian updateGuardianServices(Long id, GuardianRequestDTO guardianRequestDTO) {
-            Guardian guardian = guardianRepository.findById(id)
-                    .orElseThrow(() -> new RuntimeException("Guardian not found with id: " + id));
-
+    public GuardianResponseDTO updateGuardian(Long id, GuardianRequestDTO guardianRequestDTO) {
+        Guardian guardian = guardianRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Guardian not found"));
         guardian.setName(guardianRequestDTO.name());
         guardian.setEmail(guardianRequestDTO.email());
         guardian.setPhone(guardianRequestDTO.phone());
         guardian.setAddress(guardianRequestDTO.address());
-
-        return guardianRepository.save(guardian);
+        guardianRepository.save(guardian);
+        return GuardianMapper.toResponse(guardian);
     }
 
-        }
+}
