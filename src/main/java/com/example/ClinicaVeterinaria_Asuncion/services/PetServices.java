@@ -12,6 +12,7 @@ import com.example.ClinicaVeterinaria_Asuncion.repositories.GuardianRepository;
 import com.example.ClinicaVeterinaria_Asuncion.repositories.PetRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,8 +35,9 @@ public class PetServices {
 
     }
 
-    public List<Pet> getAllService() {
-        return petRepository.findAll();
+    public List<PetResponseDTO> getAllPets() {
+        List<Pet> petList = petRepository.findAll();
+        return petList.stream().map(x-> PetMapper.toResponse(x)).toList();
     }
 
 

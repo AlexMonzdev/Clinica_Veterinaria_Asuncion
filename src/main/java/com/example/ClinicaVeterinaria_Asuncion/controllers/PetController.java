@@ -23,8 +23,8 @@ public class PetController {
     }
 
     @GetMapping("/pets")
-    public List<Pet> getAllPets() {
-        return petServices.getAllService();
+    public ResponseEntity<List<PetResponseDTO>> getAllPets() {
+        return ResponseEntity.ok(petServices.getAllPets());
     }
 
     @GetMapping("/pets/{id}")
@@ -50,9 +50,9 @@ public class PetController {
     }
 
     @DeleteMapping("/pets/{id}")
-    public ResponseEntity<Void> deletePet(@PathVariable Long id) {
+    public ResponseEntity<?> deletePet(@PathVariable Long id) {
         petServices.deleteById(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>("Pet deleted successfully",HttpStatus.OK);
     }
 
 
