@@ -14,12 +14,14 @@ public class PetMapper {
     GuardianServices guardianService;
 
     public static Pet toEntity(PetRequestDTO petRequestDTO) {
+
+        Guardian guardian = Guardian.builder().id(petRequestDTO.guardianId()).build();
         return Pet.builder()
                 .name(petRequestDTO.name())
                 .species(petRequestDTO.species())
                 .breed(petRequestDTO.breed())
                 .birthDate(petRequestDTO.birthDate())
-                .guardian(Guardian.builder().id(petRequestDTO.guardianId()).build())
+                .guardian(guardian)
                 .build();
     }
 
