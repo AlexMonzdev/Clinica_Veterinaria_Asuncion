@@ -22,5 +22,5 @@ public record PetRequestDTO(
         LocalDate birthDate,
 
         @NotNull(message = "Guardian cannot be null")
-        GuardianRequestDTO guardian
+        Long guardianId
 ){}

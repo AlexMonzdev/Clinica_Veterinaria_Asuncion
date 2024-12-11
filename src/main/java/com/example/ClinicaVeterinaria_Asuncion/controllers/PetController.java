@@ -2,6 +2,7 @@ package com.example.ClinicaVeterinaria_Asuncion.controllers;
 
 
 import com.example.ClinicaVeterinaria_Asuncion.dtos.PetRequestDTO;
+import com.example.ClinicaVeterinaria_Asuncion.dtos.PetResponseDTO;
 import com.example.ClinicaVeterinaria_Asuncion.entities.Pet;
 import com.example.ClinicaVeterinaria_Asuncion.services.PetServices;
 import org.springframework.http.HttpStatus;
@@ -26,21 +27,26 @@ public class PetController {
         return petServices.getAllService();
     }
 
-
     @GetMapping("/pets/{id}")
-    public ResponseEntity<Pet> getPetById(@PathVariable Long id) {
-        Optional<Pet> optionalPet = petServices.findById(id);
-        if (optionalPet.isPresent()) {
-            return new ResponseEntity<Pet>(optionalPet.get(), HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    public ResponseEntity<PetResponseDTO> getPetById(@PathVariable Long id) {
+        var petResponseDTO = petServices.getPetById(id);
+        return ResponseEntity.ok(petResponseDTO);
     }
 
-
-    @PostMapping("/pets/{id}")
+    @PostMapping("/pets")
     public ResponseEntity<Pet> addPet(@RequestBody PetRequestDTO petRequestDTO) {
-        Pet pet = petServices.addPetService(petRequestDTO);
-        return new ResponseEntity<>(pet, HttpStatus.CREATED);
+        PetResponseDTO pet = petServices.createPet(petRequestDTO);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @PutMapping("/pets/{id}")
+    public ResponseEntity<PetResponseDTO> updatePet(@PathVariable Long id, @RequestBody PetRequestDTO petRequestDTO) {
+        try {
+            PetResponseDTO updatedPet = petServices.updatePet(id, petRequestDTO);
+            return ResponseEntity.ok(updatedPet);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
     }
 
     @DeleteMapping("/pets/{id}")
@@ -49,15 +55,7 @@ public class PetController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PutMapping("/pets/{id}")
-    public ResponseEntity<Pet> updatePet(@PathVariable Long id, @RequestBody PetRequestDTO petRequestDTO) {
-        try {
-            Pet updatedPet = petServices.updatePetService(id, petRequestDTO);
-            return new ResponseEntity<>(updatedPet, HttpStatus.OK);
-        } catch (RuntimeException e) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
+
 
 
 }

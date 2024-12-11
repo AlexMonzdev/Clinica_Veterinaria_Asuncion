@@ -29,7 +29,7 @@ public class GuardianServices {
         return guardianList.stream().map(GuardianMapper::toResponse).toList();
     }
 
-    public GuardianResponseDTO findById(Long id) {
+    public GuardianResponseDTO getGuardianById(Long id) {
         Guardian guardian = guardianRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Guardian not found"));
         return GuardianMapper.toResponse(guardian);
@@ -39,11 +39,6 @@ public class GuardianServices {
         return guardianRepository.findByName(name);
     }
 
-    public void deleteById(Long id) {
-        Guardian guardian = guardianRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Guardian not found with id: " + id));
-        guardianRepository.delete(guardian);
-    }
 
     public GuardianResponseDTO updateGuardian(Long id, GuardianRequestDTO guardianRequestDTO) {
         Guardian guardian = guardianRepository.findById(id)
@@ -54,6 +49,12 @@ public class GuardianServices {
         guardian.setAddress(guardianRequestDTO.address());
         guardianRepository.save(guardian);
         return GuardianMapper.toResponse(guardian);
+    }
+
+    public void deleteById(Long id) {
+        Guardian guardian = guardianRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Guardian not found with id: " + id));
+        guardianRepository.delete(guardian);
     }
 
 }
