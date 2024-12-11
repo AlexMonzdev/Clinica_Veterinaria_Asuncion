@@ -34,20 +34,6 @@ public class AppointmentsController {
       return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    /*
-    @GetMapping ("/appointment/{id}")
-    public ResponseEntity<Appointments> getAppointmentsById(@PathVariable Long id) {
-        Optional<Appointments> optionalAppointments = appointmentsServices.findById(id);
-        if (optionalAppointments.isPresent()){
-            return new ResponseEntity<>(optionalAppointments.get() , HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    } */
-
-    @GetMapping ("/appointments/next?petId=:id")    //Next Appointments by Pet ID
-
-    @GetMapping ("/appointments/past?petId=:id")    //Past Appointments by Pet ID Ordenadas por fecha de mas cercana a mas lejana
-
     @DeleteMapping ("/appointments:id")
     public ResponseEntity<Appointments> deleteAppointments (@PathVariable Long id){
         appointmentsServices.deleteById(id);

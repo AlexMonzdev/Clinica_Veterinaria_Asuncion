@@ -27,7 +27,7 @@ public class PetController {
     }
 
 
-    @GetMapping("/pets/:id")
+    @GetMapping("/pets/{id}")
     public ResponseEntity<Pet> getPetById(@PathVariable Long id) {
         Optional<Pet> optionalPet = petServices.findById(id);
         if (optionalPet.isPresent()) {
@@ -36,23 +36,20 @@ public class PetController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @GetMapping("/pets?guardianId=:id")
 
-    @GetMapping("/guardians?name=guardian_name")
-
-    @PostMapping("/pets/:id")
+    @PostMapping("/pets/{id}")
     public ResponseEntity<Pet> addPet(@RequestBody PetRequestDTO petRequestDTO) {
         Pet pet = petServices.addPetService(petRequestDTO);
         return new ResponseEntity<>(pet, HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/pets/:id")
+    @DeleteMapping("/pets/{id}")
     public ResponseEntity<Void> deletePet(@PathVariable Long id) {
         petServices.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PutMapping("/pets/:id")
+    @PutMapping("/pets/{id}")
     public ResponseEntity<Pet> updatePet(@PathVariable Long id, @RequestBody PetRequestDTO petRequestDTO) {
         try {
             Pet updatedPet = petServices.updatePetService(id, petRequestDTO);
