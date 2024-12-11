@@ -4,6 +4,7 @@ import com.example.ClinicaVeterinaria_Asuncion.dtos.GuardianRequestDTO;
 import com.example.ClinicaVeterinaria_Asuncion.dtos.GuardianResponseDTO;
 import com.example.ClinicaVeterinaria_Asuncion.entities.Guardian;
 import com.example.ClinicaVeterinaria_Asuncion.services.GuardianServices;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +22,7 @@ public class GuardianController {
     }
 
     @PostMapping("/guardians")
-    public ResponseEntity<Guardian> addGuardian(@RequestBody GuardianRequestDTO guardianRequestDTO) {
+    public ResponseEntity<Guardian> addGuardian(@Valid @RequestBody GuardianRequestDTO guardianRequestDTO) {
         var guardianCreated = guardianServices.createGuardian(guardianRequestDTO);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
