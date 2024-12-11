@@ -3,6 +3,7 @@ package com.example.ClinicaVeterinaria_Asuncion.services;
 
 import com.example.ClinicaVeterinaria_Asuncion.dtos.PetRequestDTO;
 import com.example.ClinicaVeterinaria_Asuncion.dtos.PetResponseDTO;
+import com.example.ClinicaVeterinaria_Asuncion.entities.Guardian;
 import com.example.ClinicaVeterinaria_Asuncion.entities.Pet;
 import com.example.ClinicaVeterinaria_Asuncion.repositories.PetRepository;
 import org.springframework.stereotype.Service;
@@ -22,11 +23,14 @@ public class PetServices {
 
     public Pet addPetService(PetRequestDTO petRequestDTO) {
         Pet pet = new Pet();
+        Guardian guardian = new Guardian();
+
         pet.setName(petRequestDTO.name());
         pet.setSpecies(petRequestDTO.species());
         pet.setBreed(petRequestDTO.breed());
         pet.setBirthDate(petRequestDTO.birthDate());
-        pet.setGuardian(petRequestDTO.guardian());
+        pet.setGuardian(guardian);
+
         return petRepository.save(pet);
 
     }
@@ -67,11 +71,13 @@ public class PetServices {
         Pet pet = petRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Pet not found with id: " + id));
 
+        Guardian guardian = new Guardian();
+
         pet.setName(petRequestDTO.name());
         pet.setSpecies(petRequestDTO.species());
         pet.setBreed(petRequestDTO.breed());
         pet.setBirthDate(petRequestDTO.birthDate());
-        pet.setGuardian(petRequestDTO.guardian());
+        pet.setGuardian(guardian);
         return petRepository.save(pet);
 
     }
