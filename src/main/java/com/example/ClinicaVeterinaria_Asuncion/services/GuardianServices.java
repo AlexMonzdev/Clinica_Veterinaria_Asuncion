@@ -32,7 +32,7 @@ public class GuardianServices {
 
     public GuardianResponseDTO getGuardianById(Long id) {
         Guardian guardian = guardianRepository.findById(id)
-                .orElseThrow(() -> new GuardianNotFoundException("Guardian not found"));
+                .orElseThrow(() -> new GuardianNotFoundException("Guardian not found with id: " + id));
         return GuardianMapper.toResponse(guardian);
     }
 
@@ -42,7 +42,7 @@ public class GuardianServices {
 
     public GuardianResponseDTO updateGuardian(Long id, GuardianRequestDTO guardianRequestDTO) {
         Guardian guardian = guardianRepository.findById(id)
-                .orElseThrow(() -> new GuardianNotFoundException("Guardian not found"));
+                .orElseThrow(() -> new GuardianNotFoundException("Guardian not found with id: " + id));
         guardian.setName(guardianRequestDTO.name());
         guardian.setEmail(guardianRequestDTO.email());
         guardian.setPhone(guardianRequestDTO.phone());

@@ -51,7 +51,7 @@ public class PetServices {
 
     public PetResponseDTO getPetById(Long id) {
         Pet pet = petRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Pet not found with id: " + id));
+                .orElseThrow(() -> new PetNotFoundException("Pet not found with id: " + id));
         return PetMapper.toResponse(pet);
     }
 
@@ -73,7 +73,7 @@ public class PetServices {
 
     public void deleteById(Long id) {
         Pet pet = petRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Pet not found with id: " + id));
+                .orElseThrow(() -> new PetNotFoundException("Pet not found with id: " + id));
         petRepository.delete(pet);
     }
 
