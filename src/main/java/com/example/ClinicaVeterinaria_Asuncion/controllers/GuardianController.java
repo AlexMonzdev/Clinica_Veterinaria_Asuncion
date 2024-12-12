@@ -29,8 +29,8 @@ public class GuardianController {
 
     @GetMapping("/guardians/{id}")
     public ResponseEntity<GuardianResponseDTO> getGuardianById(@PathVariable Long id) {
-        GuardianResponseDTO GuardianResponseDTO = guardianServices.getGuardianById(id);
-        return ResponseEntity.ok(GuardianResponseDTO);
+        GuardianResponseDTO guardianResponseDTO = guardianServices.getGuardianById(id);
+        return ResponseEntity.ok(guardianResponseDTO);
     }
 
     @PostMapping("/guardians")
