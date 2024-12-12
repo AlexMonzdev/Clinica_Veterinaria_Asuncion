@@ -65,8 +65,8 @@ public class PetServices {
         pet.setBreed(petRequestDTO.breed());
         pet.setBirthDate(petRequestDTO.birthDate());
         pet.setGuardian(guardian);
-        petRepository.save(pet);
-        return PetMapper.toResponse(pet);
+        Pet petresponse = petRepository.save(pet);
+        return PetMapper.toResponse(petresponse);
 
     }
 
