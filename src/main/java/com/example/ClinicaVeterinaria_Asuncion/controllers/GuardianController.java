@@ -2,6 +2,7 @@ package com.example.ClinicaVeterinaria_Asuncion.controllers;
 
 import com.example.ClinicaVeterinaria_Asuncion.dtos.GuardianRequestDTO;
 import com.example.ClinicaVeterinaria_Asuncion.dtos.GuardianResponseDTO;
+import com.example.ClinicaVeterinaria_Asuncion.dtos.PetResponseDTO;
 import com.example.ClinicaVeterinaria_Asuncion.entities.Guardian;
 import com.example.ClinicaVeterinaria_Asuncion.services.GuardianServices;
 import jakarta.validation.Valid;
@@ -21,12 +22,6 @@ public class GuardianController {
         this.guardianServices = guardianServices;
     }
 
-    @PostMapping("/guardians")
-    public ResponseEntity<Guardian> addGuardian(@Valid @RequestBody GuardianRequestDTO guardianRequestDTO) {
-        var guardianCreated = guardianServices.createGuardian(guardianRequestDTO);
-        return new ResponseEntity<>(HttpStatus.CREATED);
-    }
-
     @GetMapping("/guardians")
     public ResponseEntity<List<GuardianResponseDTO>> getAllGuardian() {
         return ResponseEntity.ok(guardianServices.getAllGuardian());
@@ -34,9 +29,16 @@ public class GuardianController {
 
     @GetMapping("/guardians/{id}")
     public ResponseEntity<GuardianResponseDTO> getGuardianById(@PathVariable Long id) {
-        GuardianResponseDTO responseDTO = guardianServices.findById(id);
-        return ResponseEntity.ok(responseDTO);
+        GuardianResponseDTO GuardianResponseDTO = guardianServices.getGuardianById(id);
+        return ResponseEntity.ok(GuardianResponseDTO);
     }
+
+    @PostMapping("/guardians")
+    public ResponseEntity<Guardian> addGuardian(@Valid @RequestBody GuardianRequestDTO guardianRequestDTO) {
+        GuardianResponseDTO guardianCreated = guardianServices.createGuardian(guardianRequestDTO);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
 
     @PutMapping("/guardians/{id}")
     public ResponseEntity<GuardianResponseDTO> updateGuardian(@PathVariable Long id, @RequestBody GuardianRequestDTO guardianRequestDTO) {
@@ -49,9 +51,9 @@ public class GuardianController {
     }
 
     @DeleteMapping("/guardians/{id}")
-    public ResponseEntity<Guardian> deleteGuardian(@PathVariable Long id) {
+    public ResponseEntity<?> deleteGuardian(@PathVariable Long id) {
         guardianServices.deleteById(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>("Guardian deleted successfully",HttpStatus.OK);
     }
 
 }
