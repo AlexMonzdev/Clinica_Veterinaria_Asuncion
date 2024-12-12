@@ -22,4 +22,14 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(PetNotFoundException.class)
+    public ResponseEntity<String> handlePetNotFoundException(PetNotFoundException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+    }
+
+    @ExceptionHandler(GuardianNotFoundException.class)
+    public ResponseEntity<String> handleGuardianNotFoundException(GuardianNotFoundException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+    }
+
 }
