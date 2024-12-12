@@ -13,11 +13,11 @@ import java.time.LocalTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Appointments {
+public class Appointment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; //petID
+    private Long id;
     @Column
     private LocalDate localDate;
     @Column
