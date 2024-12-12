@@ -3,6 +3,7 @@ package com.example.ClinicaVeterinaria_Asuncion.services;
 import com.example.ClinicaVeterinaria_Asuncion.dtos.GuardianRequestDTO;
 import com.example.ClinicaVeterinaria_Asuncion.dtos.GuardianResponseDTO;
 import com.example.ClinicaVeterinaria_Asuncion.entities.Guardian;
+import com.example.ClinicaVeterinaria_Asuncion.exceptions.GuardianNotFoundException;
 import com.example.ClinicaVeterinaria_Asuncion.mappers.GuardianMapper;
 import com.example.ClinicaVeterinaria_Asuncion.repositories.GuardianRepository;
 import org.springframework.stereotype.Service;
@@ -31,7 +32,7 @@ public class GuardianServices {
 
     public GuardianResponseDTO getGuardianById(Long id) {
         Guardian guardian = guardianRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Guardian not found"));
+                .orElseThrow(() -> new GuardianNotFoundException("Guardian not found"));
         return GuardianMapper.toResponse(guardian);
     }
 
@@ -39,10 +40,9 @@ public class GuardianServices {
         return guardianRepository.findByName(name);
     }
 
-
     public GuardianResponseDTO updateGuardian(Long id, GuardianRequestDTO guardianRequestDTO) {
         Guardian guardian = guardianRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Guardian not found"));
+                .orElseThrow(() -> new GuardianNotFoundException("Guardian not found"));
         guardian.setName(guardianRequestDTO.name());
         guardian.setEmail(guardianRequestDTO.email());
         guardian.setPhone(guardianRequestDTO.phone());
@@ -53,7 +53,7 @@ public class GuardianServices {
 
     public void deleteById(Long id) {
         Guardian guardian = guardianRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Guardian not found with id: " + id));
+                .orElseThrow(() -> new GuardianNotFoundException("Guardian not found with id: " + id));
         guardianRepository.delete(guardian);
     }
 

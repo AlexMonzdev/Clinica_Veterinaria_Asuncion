@@ -29,8 +29,16 @@ public class PetServices {
 
 
     public PetResponseDTO createPet(PetRequestDTO petRequestDTO) {
-        Pet pet = PetMapper.toEntity(petRequestDTO);
-        Pet savePet = petRepository.save(pet);
+        Guardian guardian = guardianRepository.findById(petRequestDTO.guardianId())
+                .orElseThrow(() -> new GuardianNotFoundException("Guardian not found with id: " + petRequestDTO.guardianId()));
+        Pet pet = Pet.builder()
+                .name(petRequestDTO.name())
+                .species(petRequestDTO.species())
+                .breed(petRequestDTO.breed())
+                .birthDate(petRequestDTO.birthDate())
+                .guardian(guardian).build();
+
+       Pet savePet = petRepository.save(pet);
         return PetMapper.toResponse(savePet);
 
     }
@@ -47,7 +55,7 @@ public class PetServices {
         return PetMapper.toResponse(pet);
     }
 
-    public PetResponseDTO updatePet(Long id, PetRequestDTO petRequestDTO) {
+    public PetResponseDTO updatePet(PetRequestDTO petRequestDTO, Long id)  {
         Pet pet = petRepository.findById(id)
                 .orElseThrow(() -> new PetNotFoundException("Pet not found with id: " + id));
         Guardian guardian = guardianRepository.findById(petRequestDTO.guardianId())

@@ -36,13 +36,13 @@ public class PetController {
     @PostMapping("/pets")
     public ResponseEntity<PetResponseDTO> addPet(@RequestBody PetRequestDTO petRequestDTO) {
         PetResponseDTO pet = petServices.createPet(petRequestDTO);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return new ResponseEntity<>(pet,HttpStatus.CREATED);
     }
 
     @PutMapping("/pets/{id}")
     public ResponseEntity<PetResponseDTO> updatePet(@PathVariable Long id, @RequestBody PetRequestDTO petRequestDTO) {
         try {
-            PetResponseDTO updatedPet = petServices.updatePet(id, petRequestDTO);
+            PetResponseDTO updatedPet = petServices.updatePet(petRequestDTO, id);
             return ResponseEntity.ok(updatedPet);
         } catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();

@@ -11,7 +11,6 @@ public record PetResponseDTO(
         String name,
         String species,
         String breed,
-        LocalDate birthDate,
         int age,
         Guardian guardian
 

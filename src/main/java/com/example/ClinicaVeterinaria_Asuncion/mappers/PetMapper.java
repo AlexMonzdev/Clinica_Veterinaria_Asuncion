@@ -6,15 +6,12 @@ import com.example.ClinicaVeterinaria_Asuncion.dtos.PetRequestDTO;
 import com.example.ClinicaVeterinaria_Asuncion.dtos.PetResponseDTO;
 import com.example.ClinicaVeterinaria_Asuncion.entities.Guardian;
 import com.example.ClinicaVeterinaria_Asuncion.entities.Pet;
-import com.example.ClinicaVeterinaria_Asuncion.services.AppointmentsServices;
-import com.example.ClinicaVeterinaria_Asuncion.services.GuardianServices;
+
 
 public class PetMapper {
 
-    GuardianServices guardianService;
 
     public static Pet toEntity(PetRequestDTO petRequestDTO) {
-
         Guardian guardian = Guardian.builder().id(petRequestDTO.guardianId()).build();
         return Pet.builder()
                 .name(petRequestDTO.name())
@@ -31,7 +28,7 @@ public class PetMapper {
                     .id(pet.getId())
                     .name(pet.getName())
                     .species(pet.getSpecies())
-                    .breed(pet.getSpecies())
+                    .breed(pet.getBreed())
                     .age(pet.getAge())
                     .guardian(pet.getGuardian())
                     .build();
