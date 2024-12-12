@@ -9,6 +9,7 @@ import com.example.ClinicaVeterinaria_Asuncion.exceptions.AppoinmentNotFoundExce
 import com.example.ClinicaVeterinaria_Asuncion.exceptions.GuardianNotFoundException;
 import com.example.ClinicaVeterinaria_Asuncion.exceptions.PetNotFoundException;
 import com.example.ClinicaVeterinaria_Asuncion.mappers.AppointmentMapper;
+import com.example.ClinicaVeterinaria_Asuncion.mappers.GuardianMapper;
 import com.example.ClinicaVeterinaria_Asuncion.repositories.AppointmentsRepository;
 import com.example.ClinicaVeterinaria_Asuncion.repositories.PetRepository;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,7 @@ import java.util.Optional;
 
 @Service
 public class AppointmentServices {
+
     private final AppointmentsRepository appointmentsRepository;
     private final PetRepository petRepository;
 
@@ -27,8 +29,9 @@ public class AppointmentServices {
         this.petRepository = petRepository;
     }
 
-    public List<Appointment> findAll() {
-        return appointmentsRepository.findAll();
+    public List<AppointmentResponseDTO> getAllAppointments() {
+        List<Appointment> appointmentsList = appointmentsRepository.findAll();
+        return appointmentsList.stream().map(AppointmentMapper::toResponse).toList();
     }
 
     public AppointmentResponseDTO createAppointment(AppointmentRequestDTO appointmentRequestDTO) {
@@ -44,25 +47,32 @@ public class AppointmentServices {
         return AppointmentMapper.toResponse(saveAppointment);
     }
 
-    public Optional<Appointment> findById(Long id) {
-        return appointmentsRepository.findById(id);
+    public AppointmentResponseDTO findById(Long id) {
+        Appointment appointment = appointmentsRepository.findById(id)
+                .orElseThrow(() -> new AppoinmentNotFoundException("Appointment not found with id: " + id));
+        return AppointmentMapper.toResponse(appointment);
     }
 
     public void deleteById(Long id) {
         Appointment appointment = appointmentsRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Appointment not found with id: " + id));
+                .orElseThrow(() -> new AppoinmentNotFoundException("Appointment not found with id: " + id));
         appointmentsRepository.delete(appointment);
     }
 
-//    public Appointment updateAppointmentsServices(Long id, AppointmentRequestDTO appointmentRequestDTO) {
-//            Appointment appointment = appointmentsRepository.findById(id)
-//                    .orElseThrow(() -> new RuntimeException("Guardian not found with id: " + id));
-//
-//            appointment.setLocalDate(appointmentRequestDTO.date());
-//            appointment.setLocalTime(appointmentRequestDTO.time());
-//            appointment.setReason(appointmentRequestDTO.reason());
-//            appointment.setPet(appointmentRequestDTO.pet());
-//           return appointmentsRepository.save(appointment);
-//        }
+    public AppointmentResponseDTO updateAppointmentsServices(Long id, AppointmentRequestDTO appointmentRequestDTO) {
+        Appointment appointment = appointmentsRepository.findById(id)
+                .orElseThrow(() -> new AppoinmentNotFoundException("Appointment not found with id: " + id));
+
+        Pet pet = petRepository.findById(appointmentRequestDTO.petId())
+                .orElseThrow(() -> new PetNotFoundException("Pet not found with id: " + id));
+
+        appointment.setLocalDate(appointmentRequestDTO.date());
+        appointment.setLocalTime(appointmentRequestDTO.time());
+        appointment.setReason(appointmentRequestDTO.reason());
+        appointment.setPet(pet);
+        Appointment appointmentResponse =  appointmentsRepository.save(appointment);
+
+        return AppointmentMapper.toResponse(appointmentResponse);
+    }
 }
 
