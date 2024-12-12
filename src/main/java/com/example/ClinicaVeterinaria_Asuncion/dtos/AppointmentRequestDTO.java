@@ -9,7 +9,7 @@ import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-public record AppointmentsRequestDTO(
+public record AppointmentRequestDTO(
         @NotNull(message = "Date cannot be null")
         @FutureOrPresent(message = "Date must be in the present or future")
         LocalDate date,
@@ -22,6 +22,6 @@ public record AppointmentsRequestDTO(
         String reason,
 
         @NotNull(message = "Pet cannot be null")
-        Pet pet
+        Long petId
 ){
 }
