@@ -6,7 +6,7 @@ services:
     container_name: postgres-container
     environment:
       POSTGRES_USER: clinicDB
-      POSTGRES_PASSWORD:
+      POSTGRES_PASSWORD: password
       POSTGRES_DB: clinicDB
     ports:
       - "5432:5432"
