@@ -41,3 +41,9 @@ jobs:
       - name: Run Tests
         run: mvn test
 
+      # 6. Ejecutar pruebas con el perfil activo
+      - name: Run Tests (Dev Profile)
+        run: mvn test
+        env:
+          SPRING_PROFILES_ACTIVE: dev
+
