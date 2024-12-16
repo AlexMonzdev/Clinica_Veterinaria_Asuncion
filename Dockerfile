@@ -1,14 +1,12 @@
-# Usar una imagen oficial de OpenJDK 17
-FROM openjdk:17-jdk-slim
+# Usar una imagen oficial
+FROM amazoncorretto:21-alpine-jdk
 
-# Establecer el directorio de trabajo
-WORKDIR /app
 
 # Copiar el archivo JAR al contenedor
-COPY target/ClinicaVeterinaria_Asuncion-0.0.1-SNAPSHOT.jar /app/ClinicaVeterinaria_Asuncion.jar
+COPY target/ClinicaVeterinaria_Asuncion-0.0.1-SNAPSHOT.jar app.jar
 
 # Exponer el puerto 8080 (si tu aplicación escucha en este puerto)
 EXPOSE 8080
 
 # Comando para ejecutar la aplicación
-CMD ["java", "-jar", "ClinicaVeterinaria_Asuncion.jar"]
+ENTRYPOINT ["java", "-jar", "/app.jar"]
