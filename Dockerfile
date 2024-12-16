@@ -1,14 +1,14 @@
-# Usa una imagen base de Amazon Corretto con Java 21
-FROM amazoncorretto:21
+# Usar una imagen de OpenJDK para Java
+FROM openjdk:11-jre-slim
 
-# Establece el directorio de trabajo dentro del contenedor
+# Establecer el directorio de trabajo
 WORKDIR /app
 
-# Copia el archivo JAR desde el contexto de construcción al contenedor
-COPY ClinicaVeterinaria_Asuncion-0.0.1-SNAPSHOT.jar /app/ClinicaVeterinaria_Asuncion.jar
+# Copiar el archivo JAR desde el host al contenedor
+COPY target/ClinicaVeterinaria_Asuncion-0.0.1-SNAPSHOT.jar /app/ClinicaVeterinaria_Asuncion-0.0.1-SNAPSHOT.jar
 
-# Expone el puerto que utilizará la aplicación
+# Exponer el puerto en el que la aplicación escuchará (5432 o el puerto que uses)
 EXPOSE 8080
 
-# Ejecuta la aplicación Java
-CMD ["java", "-jar", "ClinicaVeterinaria_Asuncion.jar"]
+# Comando para ejecutar la aplicación Java
+CMD ["java", "-jar", "ClinicaVeterinaria_Asuncion-0.0.1-SNAPSHOT.jar"]
