@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://dpg-cte29mrtq21c73809je0-a:5432/clinicdb_s0kb
+    url: jdbc:postgresql://dpg-cte29mrtq21c73809je0-a:5432/clinicdb_s0kb?ssl=true
     username: clinicdb_s0kb_user
     password: kEQrizeIs7cvcCOsFCcyYrwIYrQcFojt
     driver-class-name: org.postgresql.Driver
