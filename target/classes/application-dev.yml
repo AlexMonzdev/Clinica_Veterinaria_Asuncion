@@ -1,10 +1,13 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/clinicDB
-    username: clinicDB
-    password: password
+    url: jdbc:postgresql://dpg-cte29mrtq21c73809je0-a:5432/clinicdb_s0kb
+    username: clinicdb_s0kb_user
+    password: kEQrizeIs7cvcCOsFCcyYrwIYrQcFojt
     driver-class-name: org.postgresql.Driver
   jpa:
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: update
+    properties:
+      hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+      hibernate.show_sql: true
+      hibernate.format_sql: true
